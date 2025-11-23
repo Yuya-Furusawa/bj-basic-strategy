@@ -114,16 +114,16 @@ __tests__/     # テストファイル
 
 ### Streak UI Component
 
-- [ ] T024 [P] [US2] Create StreakCounter component in components/quiz/streak-counter.tsx (現在のストリーク表示)
+- [X] T024 [P] [US2] Create StreakCounter component in components/quiz/streak-counter.tsx (現在のストリーク表示)
 
 ### Streak Hook
 
-- [ ] T025 [US2] Implement useStreak hook in hooks/use-streak.ts: currentStreak, bestStreak, incrementStreak(), resetStreak()
+- [X] T025 [US2] Implement useStreak hook in hooks/use-streak.ts: currentStreak, bestStreak, incrementStreak(), resetStreak()
 
 ### Integration
 
-- [ ] T026 [US2] Add StreakCounter to quiz screen in app/quiz.tsx: 画面上部に配置
-- [ ] T027 [US2] Connect useStreak to useQuiz: 正解時increment、不正解時reset
+- [X] T026 [US2] Add StreakCounter to quiz screen in app/quiz.tsx: 画面上部に配置
+- [X] T027 [US2] Connect useStreak to useQuiz: 正解時increment、不正解時reset
 
 **Checkpoint**: User Story 2完了 - ストリーク機能が動作し、US1と独立してテスト可能
 

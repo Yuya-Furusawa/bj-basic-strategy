@@ -4,7 +4,9 @@ import { Pressable, ScrollView, StyleSheet, Text, View } from 'react-native';
 import { CardHand } from '../components/card/card-hand';
 import { ActionButton } from '../components/quiz/action-button';
 import { FeedbackDisplay } from '../components/quiz/feedback-display';
+import { StreakCounter } from '../components/quiz/streak-counter';
 import { useQuiz } from '../hooks/use-quiz';
+import { useStreak } from '../hooks/use-streak';
 import type { Action } from '../lib/strategy/types';
 
 const ACTIONS: Action[] = ['hit', 'stand', 'double', 'split'];
@@ -12,10 +14,18 @@ const ACTIONS: Action[] = ['hit', 'stand', 'double', 'split'];
 export default function QuizScreen() {
   const router = useRouter();
   const { currentHand, feedback, checkAnswer, nextHand } = useQuiz();
+  const { currentStreak, bestStreak, incrementStreak, resetStreak } =
+    useStreak();
 
   const handleActionPress = (action: Action) => {
     if (feedback.type !== 'none') return;
-    checkAnswer(action);
+    const isCorrect = checkAnswer(action);
+
+    if (isCorrect) {
+      incrementStreak();
+    } else {
+      resetStreak();
+    }
   };
 
   const handleNextHand = () => {
@@ -37,6 +47,7 @@ export default function QuizScreen() {
         <Pressable style={styles.backButton} onPress={handleGoBack}>
           <Text style={styles.backButtonText}>← Back</Text>
         </Pressable>
+        <StreakCounter currentStreak={currentStreak} bestStreak={bestStreak} />
       </View>
 
       <View style={styles.cardSection}>
@@ -100,6 +111,9 @@ const styles = StyleSheet.create({
     paddingTop: 60,
   },
   header: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
     marginBottom: 24,
   },
   backButton: {
