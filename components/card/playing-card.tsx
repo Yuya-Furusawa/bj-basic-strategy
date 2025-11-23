@@ -1,4 +1,4 @@
-import { Image } from 'expo-image';
+import { Image, ImageSource } from 'expo-image';
 import { StyleSheet, View } from 'react-native';
 
 import type { Card } from '../../lib/strategy/types';
@@ -8,7 +8,7 @@ interface PlayingCardProps {
   size?: 'small' | 'medium' | 'large';
 }
 
-const CARD_IMAGES: Record<string, ReturnType<typeof require>> = {
+const CARD_IMAGES: Record<string, ImageSource> = {
   '2_of_hearts': require('../../assets/cards/2_of_hearts.svg'),
   '2_of_diamonds': require('../../assets/cards/2_of_diamonds.svg'),
   '2_of_clubs': require('../../assets/cards/2_of_clubs.svg'),
