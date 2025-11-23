@@ -137,16 +137,16 @@ __tests__/     # テストファイル
 
 ### Storage
 
-- [ ] T028 [P] [US3] Implement streak storage in lib/storage/streak-storage.ts: loadBestStreak(), saveBestStreak() (AsyncStorage使用)
+- [X] T028 [P] [US3] Implement streak storage in lib/storage/streak-storage.ts: loadBestStreak(), saveBestStreak() (AsyncStorage使用)
 
 ### Home Screen Component
 
-- [ ] T029 [P] [US3] Create BestStreak component in components/home/best-streak.tsx (「Best Streak: [数値]」形式)
+- [X] T029 [P] [US3] Create BestStreak component in components/home/best-streak.tsx (「Best Streak: [数値]」形式)
 
 ### Integration
 
-- [ ] T030 [US3] Update useStreak hook to persist bestStreak: アプリ起動時にAsyncStorageから読み込み、更新時に保存
-- [ ] T031 [US3] Add BestStreak to home screen in app/(tabs)/index.tsx: トップページに最高記録表示
+- [X] T030 [US3] Update useStreak hook to persist bestStreak: アプリ起動時にAsyncStorageから読み込み、更新時に保存
+- [X] T031 [US3] Add BestStreak to home screen in app/index.tsx: トップページに最高記録表示
 
 **Checkpoint**: User Story 3完了 - 永続化機能が動作し、全ユーザーストーリーが独立して機能
 
