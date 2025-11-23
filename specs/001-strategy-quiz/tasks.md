@@ -77,30 +77,30 @@ __tests__/     # テストファイル
 
 ### Card Display Components
 
-- [ ] T015 [P] [US1] Create PlayingCard component in components/card/playing-card.tsx (単一カード表示、expo-image使用)
-- [ ] T016 [P] [US1] Create CardHand component in components/card/card-hand.tsx (プレイヤー手札2枚、ディーラーアップカード1枚表示)
+- [X] T015 [P] [US1] Create PlayingCard component in components/card/playing-card.tsx (単一カード表示、expo-image使用)
+- [X] T016 [P] [US1] Create CardHand component in components/card/card-hand.tsx (プレイヤー手札2枚、ディーラーアップカード1枚表示)
 
 ### Quiz UI Components
 
-- [ ] T017 [P] [US1] Create ActionButton component in components/quiz/action-button.tsx (Hit/Stand/Double/Split 4ボタン)
-- [ ] T018 [P] [US1] Create FeedbackDisplay component in components/quiz/feedback-display.tsx (正解:緑「Correct!」、不正解:赤「Wrong! Answer: [正解]」)
+- [X] T017 [P] [US1] Create ActionButton component in components/quiz/action-button.tsx (Hit/Stand/Double/Split 4ボタン)
+- [X] T018 [P] [US1] Create FeedbackDisplay component in components/quiz/feedback-display.tsx (正解:緑「Correct!」、不正解:赤「Wrong! Answer: [正解]」)
 
 ### Home Screen Components
 
-- [ ] T019 [P] [US1] Create StartButton component in components/home/start-button.tsx
+- [X] T019 [P] [US1] Create StartButton component in components/home/start-button.tsx
 
 ### Quiz Hook
 
-- [ ] T020 [US1] Implement useQuiz hook in hooks/use-quiz.ts: currentHand, feedback, checkAnswer(), nextHand()
+- [X] T020 [US1] Implement useQuiz hook in hooks/use-quiz.ts: currentHand, feedback, checkAnswer(), nextHand()
 
 ### Screens
 
-- [ ] T021 [US1] Update home screen in app/(tabs)/index.tsx: StartButton配置、router.push('/quiz')遷移
-- [ ] T022 [US1] Create quiz screen in app/quiz.tsx: CardHand, ActionButton×4, FeedbackDisplay, NextHandボタン, 戻るボタン配置
+- [X] T021 [US1] Update home screen in app/index.tsx: StartButton配置、router.push('/quiz')遷移
+- [X] T022 [US1] Create quiz screen in app/quiz.tsx: CardHand, ActionButton×4, FeedbackDisplay, NextHandボタン, 戻るボタン配置
 
 ### Integration
 
-- [ ] T023 [US1] Connect useQuiz hook to quiz screen: 正誤判定、フィードバック表示、次の問題生成
+- [X] T023 [US1] Connect useQuiz hook to quiz screen: 正誤判定、フィードバック表示、次の問題生成
 
 **Checkpoint**: User Story 1完了 - クイズの基本フローが動作し、独立してテスト可能
 

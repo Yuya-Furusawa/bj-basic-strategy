@@ -1,15 +1,56 @@
-import { Text, View } from "react-native";
+import { useRouter } from 'expo-router';
+import { StyleSheet, Text, View } from 'react-native';
 
-export default function Index() {
+import { StartButton } from '../components/home/start-button';
+
+export default function HomeScreen() {
+  const router = useRouter();
+
+  const handleStartQuiz = () => {
+    router.push('/quiz');
+  };
+
   return (
-    <View
-      style={{
-        flex: 1,
-        justifyContent: "center",
-        alignItems: "center",
-      }}
-    >
-      <Text>Edit app/index.tsx to edit this screen.</Text>
+    <View style={styles.container}>
+      <View style={styles.header}>
+        <Text style={styles.title}>Blackjack</Text>
+        <Text style={styles.subtitle}>Basic Strategy Quiz</Text>
+      </View>
+
+      <View style={styles.content}>
+        <StartButton onPress={handleStartQuiz} />
+      </View>
     </View>
   );
 }
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: '#1a5f2a',
+    padding: 24,
+  },
+  header: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  title: {
+    fontSize: 48,
+    fontWeight: 'bold',
+    color: '#fff',
+    textShadowColor: 'rgba(0, 0, 0, 0.3)',
+    textShadowOffset: { width: 2, height: 2 },
+    textShadowRadius: 4,
+  },
+  subtitle: {
+    fontSize: 24,
+    color: '#e0e0e0',
+    marginTop: 8,
+  },
+  content: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+});
