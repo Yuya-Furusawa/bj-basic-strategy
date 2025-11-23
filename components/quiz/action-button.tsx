@@ -1,3 +1,4 @@
+import * as Haptics from 'expo-haptics';
 import { Pressable, StyleSheet, Text } from 'react-native';
 
 import type { Action } from '../../lib/strategy/types';
@@ -29,6 +30,11 @@ export function ActionButton({
 }: ActionButtonProps) {
   const backgroundColor = disabled ? '#ccc' : ACTION_COLORS[action];
 
+  const handlePress = () => {
+    Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium);
+    onPress(action);
+  };
+
   return (
     <Pressable
       style={({ pressed }) => [
@@ -36,7 +42,7 @@ export function ActionButton({
         { backgroundColor },
         pressed && !disabled && styles.pressed,
       ]}
-      onPress={() => onPress(action)}
+      onPress={handlePress}
       disabled={disabled}
     >
       <Text style={styles.text}>{ACTION_LABELS[action]}</Text>

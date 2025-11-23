@@ -1,4 +1,10 @@
-import { StyleSheet, Text, View } from 'react-native';
+import { useEffect } from 'react';
+import { StyleSheet, Text } from 'react-native';
+import Animated, {
+  useAnimatedStyle,
+  useSharedValue,
+  withTiming,
+} from 'react-native-reanimated';
 
 import type { FeedbackState } from '../../lib/quiz/quiz-state';
 
@@ -14,6 +20,20 @@ const ACTION_LABELS: Record<string, string> = {
 };
 
 export function FeedbackDisplay({ feedback }: FeedbackDisplayProps) {
+  const opacity = useSharedValue(0);
+
+  useEffect(() => {
+    if (feedback.type !== 'none') {
+      opacity.value = withTiming(1, { duration: 300 });
+    } else {
+      opacity.value = 0;
+    }
+  }, [feedback, opacity]);
+
+  const animatedStyle = useAnimatedStyle(() => ({
+    opacity: opacity.value,
+  }));
+
   if (feedback.type === 'none') {
     return null;
   }
@@ -22,7 +42,7 @@ export function FeedbackDisplay({ feedback }: FeedbackDisplayProps) {
   const backgroundColor = isCorrect ? '#4CAF50' : '#F44336';
 
   return (
-    <View style={[styles.container, { backgroundColor }]}>
+    <Animated.View style={[styles.container, { backgroundColor }, animatedStyle]}>
       {isCorrect ? (
         <Text style={styles.text}>Correct!</Text>
       ) : (
@@ -30,7 +50,7 @@ export function FeedbackDisplay({ feedback }: FeedbackDisplayProps) {
           Wrong! Answer: {ACTION_LABELS[feedback.correctAnswer]}
         </Text>
       )}
-    </View>
+    </Animated.View>
   );
 }
 

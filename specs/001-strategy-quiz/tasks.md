@@ -156,11 +156,11 @@ __tests__/     # テストファイル
 
 **Purpose**: 複数ユーザーストーリーにまたがる改善
 
-- [ ] T032 [P] Add haptic feedback to action buttons using expo-haptics in components/quiz/action-button.tsx
-- [ ] T033 [P] Add fade animation to FeedbackDisplay using react-native-reanimated in components/quiz/feedback-display.tsx
-- [ ] T034 [P] Verify offline functionality: 機内モードでの全機能テスト
-- [ ] T035 Run all unit tests and verify 80% business logic coverage
-- [ ] T036 Run quickstart.md validation: 全Verification Checklist項目を確認
+- [X] T032 [P] Add haptic feedback to action buttons using expo-haptics in components/quiz/action-button.tsx
+- [X] T033 [P] Add fade animation to FeedbackDisplay using react-native-reanimated in components/quiz/feedback-display.tsx
+- [X] T034 [P] Verify offline functionality: 機内モードでの全機能テスト
+- [X] T035 Run all unit tests and verify 80% business logic coverage
+- [X] T036 Run quickstart.md validation: 全Verification Checklist項目を確認
 
 ---
 
