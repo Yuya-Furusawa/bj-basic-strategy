@@ -30,12 +30,12 @@ __tests__/     # テストファイル
 
 **Purpose**: プロジェクト初期化と基本構造の作成
 
-- [ ] T001 Install @react-native-async-storage/async-storage via `npx expo install @react-native-async-storage/async-storage`
-- [ ] T002 [P] Create lib/ directory structure per plan.md: lib/strategy/, lib/quiz/, lib/storage/
-- [ ] T003 [P] Create components/ directory structure per plan.md: components/card/, components/quiz/, components/home/
-- [ ] T004 [P] Create hooks/ directory: hooks/
-- [ ] T005 [P] Setup Jest configuration for Expo (verify jest-expo preset in package.json)
-- [ ] T006 Download and place card images (Vector Playing Cards 3.2) in assets/cards/ with naming convention {rank}_{suit}.png
+- [X] T001 Install @react-native-async-storage/async-storage via `npx expo install @react-native-async-storage/async-storage`
+- [X] T002 [P] Create lib/ directory structure per plan.md: lib/strategy/, lib/quiz/, lib/storage/
+- [X] T003 [P] Create components/ directory structure per plan.md: components/card/, components/quiz/, components/home/
+- [X] T004 [P] Create hooks/ directory: hooks/
+- [X] T005 [P] Setup Jest configuration for Expo (verify jest-expo preset in package.json)
+- [X] T006 Download and place card images (Vector Playing Cards 3.2) in assets/cards/ with naming convention {rank}_{suit}.png
 
 ---
 
