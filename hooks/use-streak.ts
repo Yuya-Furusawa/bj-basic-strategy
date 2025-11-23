@@ -1,8 +1,15 @@
 import { useCallback, useState } from 'react';
+import { useFocusEffect } from '@react-navigation/native';
+
+import {
+  loadBestStreak,
+  saveBestStreak,
+} from '../lib/storage/streak-storage';
 
 interface UseStreakReturn {
   currentStreak: number;
   bestStreak: number;
+  isLoading: boolean;
   incrementStreak: () => void;
   resetStreak: () => void;
 }
@@ -10,11 +17,31 @@ interface UseStreakReturn {
 export function useStreak(): UseStreakReturn {
   const [currentStreak, setCurrentStreak] = useState(0);
   const [bestStreak, setBestStreak] = useState(0);
+  const [isLoading, setIsLoading] = useState(true);
+
+  // 画面にフォーカスが当たるたびにAsyncStorageから最高記録を読み込む
+  useFocusEffect(
+    useCallback(() => {
+      const loadStoredBestStreak = async () => {
+        const stored = await loadBestStreak();
+        setBestStreak(stored);
+        setIsLoading(false);
+      };
+      loadStoredBestStreak();
+    }, [])
+  );
 
   const incrementStreak = useCallback(() => {
     setCurrentStreak((prev) => {
       const newStreak = prev + 1;
-      setBestStreak((currentBest) => Math.max(currentBest, newStreak));
+      setBestStreak((currentBest) => {
+        if (newStreak > currentBest) {
+          // 新記録の場合は保存
+          saveBestStreak(newStreak);
+          return newStreak;
+        }
+        return currentBest;
+      });
       return newStreak;
     });
   }, []);
@@ -26,6 +53,7 @@ export function useStreak(): UseStreakReturn {
   return {
     currentStreak,
     bestStreak,
+    isLoading,
     incrementStreak,
     resetStreak,
   };

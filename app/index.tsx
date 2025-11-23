@@ -1,10 +1,13 @@
 import { useRouter } from 'expo-router';
 import { StyleSheet, Text, View } from 'react-native';
 
+import { BestStreak } from '../components/home/best-streak';
 import { StartButton } from '../components/home/start-button';
+import { useStreak } from '../hooks/use-streak';
 
 export default function HomeScreen() {
   const router = useRouter();
+  const { bestStreak, isLoading } = useStreak();
 
   const handleStartQuiz = () => {
     router.push('/quiz');
@@ -18,7 +21,10 @@ export default function HomeScreen() {
       </View>
 
       <View style={styles.content}>
-        <StartButton onPress={handleStartQuiz} />
+        {!isLoading && <BestStreak bestStreak={bestStreak} />}
+        <View style={styles.buttonContainer}>
+          <StartButton onPress={handleStartQuiz} />
+        </View>
       </View>
     </View>
   );
@@ -52,5 +58,9 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
+    gap: 32,
+  },
+  buttonContainer: {
+    marginTop: 16,
   },
 });
