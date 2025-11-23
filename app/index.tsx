@@ -16,7 +16,7 @@ export default function HomeScreen() {
   return (
     <View style={styles.container}>
       <View style={styles.header}>
-        <Text style={styles.title}>Blackjack</Text>
+        <Text style={styles.title}>BlackJack</Text>
         <Text style={styles.subtitle}>Basic Strategy Quiz</Text>
       </View>
 
@@ -33,7 +33,7 @@ export default function HomeScreen() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#1a5f2a',
+    backgroundColor: '#102216',
     padding: 24,
   },
   header: {

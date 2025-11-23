@@ -1,5 +1,6 @@
+import AntDesign from '@expo/vector-icons/AntDesign';
 import { useEffect } from 'react';
-import { StyleSheet, Text } from 'react-native';
+import { StyleSheet, Text, View } from 'react-native';
 import Animated, {
   useAnimatedStyle,
   useSharedValue,
@@ -39,14 +40,18 @@ export function FeedbackDisplay({ feedback }: FeedbackDisplayProps) {
   }
 
   const isCorrect = feedback.type === 'correct';
-  const backgroundColor = isCorrect ? '#4CAF50' : '#F44336';
+  const backgroundColor = isCorrect ? '#104A23' : '#F44336';
+  const textColor = isCorrect ? '#13EC5B' : '#fff';
 
   return (
     <Animated.View style={[styles.container, { backgroundColor }, animatedStyle]}>
       {isCorrect ? (
-        <Text style={styles.text}>Correct!</Text>
+        <View style={styles.feedbackRow}>
+          <AntDesign name="check-circle" size={20} color="#13EC5B" />
+          <Text style={[styles.text, { color: textColor }]}>Correct!</Text>
+        </View>
       ) : (
-        <Text style={styles.text}>
+        <Text style={[styles.text, { color: textColor }]}>
           Wrong! Answer: {ACTION_LABELS[feedback.correctAnswer]}
         </Text>
       )}
@@ -61,9 +66,15 @@ const styles = StyleSheet.create({
     borderRadius: 12,
     alignItems: 'center',
     justifyContent: 'center',
+    width: '100%',
+    marginBottom: 24,
+  },
+  feedbackRow: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 8,
   },
   text: {
-    color: '#fff',
     fontSize: 20,
     fontWeight: 'bold',
   },

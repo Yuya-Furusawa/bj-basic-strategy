@@ -12,7 +12,7 @@ export function CardHand({ playerCards, dealerUpCard }: CardHandProps) {
   return (
     <View style={styles.container}>
       <View style={styles.section}>
-        <Text style={styles.label}>Dealer</Text>
+        <Text style={styles.label}>Dealer Shows</Text>
         <View style={styles.dealerCards}>
           <PlayingCard card={dealerUpCard} size="medium" />
         </View>
@@ -39,9 +39,9 @@ const styles = StyleSheet.create({
     gap: 8,
   },
   label: {
-    fontSize: 16,
-    fontWeight: '600',
-    color: '#666',
+    fontSize: 24,
+    fontWeight: 'bold',
+    color: '#fff',
   },
   dealerCards: {
     flexDirection: 'row',

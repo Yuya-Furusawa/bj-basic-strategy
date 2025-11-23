@@ -16,19 +16,13 @@ const ACTION_LABELS: Record<Action, string> = {
   split: 'Split',
 };
 
-const ACTION_COLORS: Record<Action, string> = {
-  hit: '#4CAF50',
-  stand: '#F44336',
-  double: '#FF9800',
-  split: '#2196F3',
-};
-
 export function ActionButton({
   action,
   onPress,
   disabled = false,
 }: ActionButtonProps) {
-  const backgroundColor = disabled ? '#ccc' : ACTION_COLORS[action];
+  const backgroundColor = disabled ? '#1C2D21' : '#28382D';
+  const buttonTextColor = disabled ? '#768179' : '#fff';
 
   const handlePress = () => {
     Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium);
@@ -45,17 +39,18 @@ export function ActionButton({
       onPress={handlePress}
       disabled={disabled}
     >
-      <Text style={styles.text}>{ACTION_LABELS[action]}</Text>
+      <Text style={[styles.text, { color: buttonTextColor }]}>{ACTION_LABELS[action]}</Text>
     </Pressable>
   );
 }
 
 const styles = StyleSheet.create({
   button: {
+    flex: 1,
+    flexBasis: 0,
     paddingVertical: 16,
     paddingHorizontal: 24,
     borderRadius: 12,
-    minWidth: 100,
     alignItems: 'center',
     justifyContent: 'center',
   },
@@ -64,7 +59,6 @@ const styles = StyleSheet.create({
     transform: [{ scale: 0.98 }],
   },
   text: {
-    color: '#fff',
     fontSize: 18,
     fontWeight: 'bold',
   },

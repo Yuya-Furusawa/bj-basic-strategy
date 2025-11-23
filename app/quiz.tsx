@@ -45,7 +45,7 @@ export default function QuizScreen() {
     >
       <View style={styles.header}>
         <Pressable style={styles.backButton} onPress={handleGoBack}>
-          <Text style={styles.backButtonText}>← Back</Text>
+          <Text style={styles.backButtonText}>←</Text>
         </Pressable>
         <StreakCounter currentStreak={currentStreak} bestStreak={bestStreak} />
       </View>
@@ -57,12 +57,8 @@ export default function QuizScreen() {
         />
       </View>
 
-      <View style={styles.handInfo}>
-        <Text style={styles.handInfoText}>
-          {currentHand.handType.charAt(0).toUpperCase() +
-            currentHand.handType.slice(1)}{' '}
-          {currentHand.handValue}
-        </Text>
+      <View style={styles.feedbackSection}>
+        <FeedbackDisplay feedback={feedback} />
       </View>
 
       <View style={styles.actionSection}>
@@ -88,15 +84,11 @@ export default function QuizScreen() {
         </View>
       </View>
 
-      <View style={styles.feedbackSection}>
-        <FeedbackDisplay feedback={feedback} />
-
-        {isAnswered && (
-          <Pressable style={styles.nextButton} onPress={handleNextHand}>
-            <Text style={styles.nextButtonText}>Next Hand</Text>
-          </Pressable>
-        )}
-      </View>
+      {isAnswered && (
+        <Pressable style={styles.nextButton} onPress={handleNextHand}>
+          <Text style={styles.nextButtonText}>Next Hand</Text>
+        </Pressable>
+      )}
     </ScrollView>
   );
 }
@@ -104,11 +96,10 @@ export default function QuizScreen() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#1a5f2a',
+    backgroundColor: '#102216',
   },
   contentContainer: {
     padding: 24,
-    paddingTop: 60,
   },
   header: {
     flexDirection: 'row',
@@ -128,36 +119,29 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     marginBottom: 16,
   },
-  handInfo: {
-    alignItems: 'center',
-    marginBottom: 24,
-  },
-  handInfoText: {
-    color: '#e0e0e0',
-    fontSize: 16,
-  },
   actionSection: {
     gap: 12,
     marginBottom: 24,
   },
   actionRow: {
+    width: '100%',
     flexDirection: 'row',
-    justifyContent: 'center',
+    justifyContent: 'space-between',
     gap: 12,
   },
   feedbackSection: {
     alignItems: 'center',
-    gap: 16,
-    minHeight: 120,
   },
   nextButton: {
-    backgroundColor: '#fff',
-    paddingVertical: 14,
-    paddingHorizontal: 32,
+    backgroundColor: '#13EC5B',
+    paddingVertical: 24,
     borderRadius: 12,
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginBottom: 30,
   },
   nextButtonText: {
-    color: '#1a5f2a',
+    color: '#102216',
     fontSize: 18,
     fontWeight: 'bold',
   },
