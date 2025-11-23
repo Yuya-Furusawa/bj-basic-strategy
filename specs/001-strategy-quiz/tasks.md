@@ -47,23 +47,23 @@ __tests__/     # テストファイル
 
 ### Types & Data Model
 
-- [ ] T007 [P] Create type definitions in lib/strategy/types.ts: Suit, Rank, Card, HandType, Action, QuizHand interfaces
-- [ ] T008 [P] Create quiz state types in lib/quiz/quiz-state.ts: FeedbackState, StreakRecord, QuizState interfaces
+- [X] T007 [P] Create type definitions in lib/strategy/types.ts: Suit, Rank, Card, HandType, Action, QuizHand interfaces
+- [X] T008 [P] Create quiz state types in lib/quiz/quiz-state.ts: FeedbackState, StreakRecord, QuizState interfaces
 
 ### Strategy Table (Core Business Logic)
 
-- [ ] T009 Write unit tests for strategy table in __tests__/lib/strategy/strategy-table.test.ts (270 patterns coverage)
-- [ ] T010 Implement basic strategy lookup table in lib/strategy/strategy-table.ts: HARD_STRATEGY, SOFT_STRATEGY, PAIR_STRATEGY, getCorrectAction()
+- [X] T009 Write unit tests for strategy table in __tests__/lib/strategy/strategy-table.test.ts (270 patterns coverage)
+- [X] T010 Implement basic strategy lookup table in lib/strategy/strategy-table.ts: HARD_STRATEGY, SOFT_STRATEGY, PAIR_STRATEGY, getCorrectAction()
 
 ### Hand Evaluator
 
-- [ ] T011 [P] Write unit tests for hand evaluator in __tests__/lib/strategy/hand-evaluator.test.ts
-- [ ] T012 Implement hand evaluation logic in lib/strategy/hand-evaluator.ts: getHandType(), getHandValue(), getCardValue()
+- [X] T011 [P] Write unit tests for hand evaluator in __tests__/lib/strategy/hand-evaluator.test.ts
+- [X] T012 Implement hand evaluation logic in lib/strategy/hand-evaluator.ts: getHandType(), getHandValue(), getCardValue()
 
 ### Quiz Generator
 
-- [ ] T013 [P] Write unit tests for quiz generator in __tests__/lib/quiz/quiz-generator.test.ts (均等分布テスト含む)
-- [ ] T014 Implement quiz generation in lib/quiz/quiz-generator.ts: generateRandomHand(), generateRandomCard()
+- [X] T013 [P] Write unit tests for quiz generator in __tests__/lib/quiz/quiz-generator.test.ts (均等分布テスト含む)
+- [X] T014 Implement quiz generation in lib/quiz/quiz-generator.ts: generateRandomHand(), generateRandomCard()
 
 **Checkpoint**: Foundation ready - ユーザーストーリー実装を開始可能
 
