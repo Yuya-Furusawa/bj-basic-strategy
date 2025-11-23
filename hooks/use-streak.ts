@@ -1,4 +1,5 @@
-import { useCallback, useEffect, useState } from 'react';
+import { useCallback, useState } from 'react';
+import { useFocusEffect } from '@react-navigation/native';
 
 import {
   loadBestStreak,
@@ -18,15 +19,17 @@ export function useStreak(): UseStreakReturn {
   const [bestStreak, setBestStreak] = useState(0);
   const [isLoading, setIsLoading] = useState(true);
 
-  // アプリ起動時にAsyncStorageから最高記録を読み込む
-  useEffect(() => {
-    const loadStoredBestStreak = async () => {
-      const stored = await loadBestStreak();
-      setBestStreak(stored);
-      setIsLoading(false);
-    };
-    loadStoredBestStreak();
-  }, []);
+  // 画面にフォーカスが当たるたびにAsyncStorageから最高記録を読み込む
+  useFocusEffect(
+    useCallback(() => {
+      const loadStoredBestStreak = async () => {
+        const stored = await loadBestStreak();
+        setBestStreak(stored);
+        setIsLoading(false);
+      };
+      loadStoredBestStreak();
+    }, [])
+  );
 
   const incrementStreak = useCallback(() => {
     setCurrentStreak((prev) => {
