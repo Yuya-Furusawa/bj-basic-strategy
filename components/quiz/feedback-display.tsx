@@ -1,11 +1,7 @@
 import AntDesign from '@expo/vector-icons/AntDesign';
 import { useEffect } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
-import Animated, {
-  useAnimatedStyle,
-  useSharedValue,
-  withTiming,
-} from 'react-native-reanimated';
+import Animated, { useAnimatedStyle, useSharedValue, withTiming } from 'react-native-reanimated';
 
 import type { FeedbackState } from '../../lib/quiz/quiz-state';
 
@@ -36,9 +32,7 @@ export function FeedbackDisplay({ feedback }: FeedbackDisplayProps) {
   }));
 
   if (feedback.type === 'none') {
-    return (
-      <View style={styles.container}></View>
-    );
+    return <View style={styles.container}></View>;
   }
 
   const isCorrect = feedback.type === 'correct';

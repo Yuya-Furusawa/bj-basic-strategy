@@ -21,8 +21,10 @@ npm run lint       # Run ESLint
 ```
 
 ## Active Technologies
+
 - TypeScript ~5.9.2 (strict mode enabled) (001-strategy-quiz)
 - AsyncStorage (expo-secure-store または @react-native-async-storage/async-storage) (001-strategy-quiz)
 
 ## Recent Changes
+
 - 001-strategy-quiz: Added TypeScript ~5.9.2 (strict mode enabled)

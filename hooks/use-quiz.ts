@@ -12,9 +12,7 @@ interface UseQuizReturn {
 }
 
 export function useQuiz(): UseQuizReturn {
-  const [currentHand, setCurrentHand] = useState<QuizHand>(() =>
-    generateRandomHand()
-  );
+  const [currentHand, setCurrentHand] = useState<QuizHand>(() => generateRandomHand());
   const [feedback, setFeedback] = useState<FeedbackState>({ type: 'none' });
 
   const checkAnswer = useCallback(

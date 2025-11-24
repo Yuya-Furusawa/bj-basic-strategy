@@ -5,7 +5,7 @@
 **Status**: Draft
 **Input**: User description: "ブラックジャックのベーシックストラテジーを覚えるためのクイズを出してくれるシンプルなモバイルアプリの仕様"
 
-## User Scenarios & Testing *(mandatory)*
+## User Scenarios & Testing _(mandatory)_
 
 ### User Story 1 - クイズでベーシックストラテジーを学習する (Priority: P1)
 
@@ -63,7 +63,7 @@
 - 初回起動時は最高記録が0として表示される
 - アプリがバックグラウンドに移動した際、現在のクイズ状態は保持される
 
-## Requirements *(mandatory)*
+## Requirements _(mandatory)_
 
 ### Functional Requirements
 
@@ -84,7 +84,7 @@
 - **ストリーク記録**: 現在の連続正解数、全期間最高記録
 - **カード**: スート（ハート/ダイヤ/クラブ/スペード）とランク（2-10、J、Q、K、A）。画像形式で表示
 
-## Success Criteria *(mandatory)*
+## Success Criteria _(mandatory)_
 
 ### Measurable Outcomes
 

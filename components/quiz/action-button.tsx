@@ -16,11 +16,7 @@ const ACTION_LABELS: Record<Action, string> = {
   split: 'Split',
 };
 
-export function ActionButton({
-  action,
-  onPress,
-  disabled = false,
-}: ActionButtonProps) {
+export function ActionButton({ action, onPress, disabled = false }: ActionButtonProps) {
   const backgroundColor = disabled ? '#1C2D21' : '#28382D';
   const buttonTextColor = disabled ? '#768179' : '#fff';
 

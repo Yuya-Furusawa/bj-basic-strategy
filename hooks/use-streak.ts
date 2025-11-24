@@ -1,10 +1,7 @@
 import { useCallback, useState } from 'react';
 import { useFocusEffect } from '@react-navigation/native';
 
-import {
-  loadBestStreak,
-  saveBestStreak,
-} from '../lib/storage/streak-storage';
+import { loadBestStreak, saveBestStreak } from '../lib/storage/streak-storage';
 
 interface UseStreakReturn {
   currentStreak: number;

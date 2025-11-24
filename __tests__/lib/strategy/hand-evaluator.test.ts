@@ -1,8 +1,4 @@
-import {
-  getCardValue,
-  getHandType,
-  getHandValue,
-} from '../../../lib/strategy/hand-evaluator';
+import { getCardValue, getHandType, getHandValue } from '../../../lib/strategy/hand-evaluator';
 import type { Card } from '../../../lib/strategy/types';
 
 // ヘルパー関数：カードを作成

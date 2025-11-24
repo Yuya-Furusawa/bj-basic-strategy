@@ -1,7 +1,4 @@
-import {
-  getCorrectAction,
-  getDealerCardIndex,
-} from '../../../lib/strategy/strategy-table';
+import { getCorrectAction, getDealerCardIndex } from '../../../lib/strategy/strategy-table';
 import type { Action, Rank } from '../../../lib/strategy/types';
 
 describe('strategy-table', () => {
@@ -54,14 +51,14 @@ describe('strategy-table', () => {
           'K',
           'A',
         ];
-  
+
         [5, 6, 7, 8].forEach((handValue) => {
           dealerCards.forEach((dealerCard) => {
             expect(getCorrectAction('hard', handValue, dealerCard)).toBe('hit');
           });
         });
       });
-  
+
       // Hard 9: Double 3-6, otherwise Hit
       it('Hard 9のとき、3-6のディーラーカードに対してDoubleを返却する、それ以外はHitを返却する', () => {
         expect(getCorrectAction('hard', 9, '2')).toBe('hit');
@@ -78,7 +75,7 @@ describe('strategy-table', () => {
         expect(getCorrectAction('hard', 9, 'K')).toBe('hit');
         expect(getCorrectAction('hard', 9, 'A')).toBe('hit');
       });
-  
+
       // Hard 10: Double 2-9, Hit 10/A
       it('Hard 10のとき、2-9のディーラーカードに対してDoubleを返却する、それ以外はHitを返却する', () => {
         expect(getCorrectAction('hard', 10, '2')).toBe('double');
@@ -95,7 +92,7 @@ describe('strategy-table', () => {
         expect(getCorrectAction('hard', 10, 'K')).toBe('hit');
         expect(getCorrectAction('hard', 10, 'A')).toBe('hit');
       });
-  
+
       // Hard 11: Always Double
       it('Hard 11のとき、常にDoubleを返却する', () => {
         const dealerCards: Rank[] = [
@@ -113,12 +110,12 @@ describe('strategy-table', () => {
           'K',
           'A',
         ];
-  
+
         dealerCards.forEach((dealerCard) => {
           expect(getCorrectAction('hard', 11, dealerCard)).toBe('double');
         });
       });
-  
+
       // Hard 12: Stand 4-6, Hit otherwise
       it('Hard 12のとき、4-6のディーラーカードに対してStandを返却する、それ以外はHitを返却する', () => {
         expect(getCorrectAction('hard', 12, '2')).toBe('hit');
@@ -135,7 +132,7 @@ describe('strategy-table', () => {
         expect(getCorrectAction('hard', 12, 'K')).toBe('hit');
         expect(getCorrectAction('hard', 12, 'A')).toBe('hit');
       });
-  
+
       // Hard 13-16: Stand 2-6, Hit 7+
       it('Hard 13-16のとき、2-6のディーラーカードに対してStandを返却する、それ以外はHitを返却する', () => {
         [13, 14, 15, 16].forEach((handValue) => {
@@ -154,7 +151,7 @@ describe('strategy-table', () => {
           expect(getCorrectAction('hard', handValue, 'A')).toBe('hit');
         });
       });
-  
+
       // Hard 17+: Always Stand
       it('Hard 17+のとき、常にStandを返却する', () => {
         const dealerCards: Rank[] = [
@@ -172,7 +169,7 @@ describe('strategy-table', () => {
           'K',
           'A',
         ];
-  
+
         [17, 18, 19, 20, 21].forEach((handValue) => {
           dealerCards.forEach((dealerCard) => {
             expect(getCorrectAction('hard', handValue, dealerCard)).toBe('stand');
@@ -180,7 +177,7 @@ describe('strategy-table', () => {
         });
       });
     });
-  
+
     describe('Soft Hands', () => {
       // Soft 13-14 (A+2, A+3): Double 5-6, Hit otherwise
       it('Soft 13-14のとき、5-6のディーラーカードに対してDoubleを返却する、それ以外はHitを返却する', () => {
@@ -200,7 +197,7 @@ describe('strategy-table', () => {
           expect(getCorrectAction('soft', handValue, 'A')).toBe('hit');
         });
       });
-  
+
       // Soft 15-16 (A+4, A+5): Double 4-6, Hit otherwise
       it('Soft 15-16のとき、4-6のディーラーカードに対してDoubleを返却する、それ以外はHitを返却する', () => {
         [15, 16].forEach((handValue) => {
@@ -219,7 +216,7 @@ describe('strategy-table', () => {
           expect(getCorrectAction('soft', handValue, 'A')).toBe('hit');
         });
       });
-  
+
       // Soft 17 (A+6): Double 3-6, Hit otherwise
       it('Soft 17のとき、3-6のディラーカードに対してDoubleを返却する、それ以外はHitを返却する', () => {
         expect(getCorrectAction('soft', 17, '2')).toBe('hit');
@@ -236,7 +233,7 @@ describe('strategy-table', () => {
         expect(getCorrectAction('soft', 17, 'K')).toBe('hit');
         expect(getCorrectAction('soft', 17, 'A')).toBe('hit');
       });
-  
+
       // Soft 18 (A+7): Stand/Double 2-6, Stand 7-8, Hit 9-A
       it('Soft 18のとき、2-6のディラーカードに対してStand/Doubleを返却する、7-8のディラーカードに対してStandを返却する、それ以外はHitを返却する', () => {
         expect(getCorrectAction('soft', 18, '2')).toBe('stand');
@@ -253,7 +250,7 @@ describe('strategy-table', () => {
         expect(getCorrectAction('soft', 18, 'K')).toBe('hit');
         expect(getCorrectAction('soft', 18, 'A')).toBe('hit');
       });
-  
+
       // Soft 19-20: Always Stand
       it('Soft 19-20のとき、ディラーカードに対して常にStandを返却する', () => {
         const dealerCards: Rank[] = [
@@ -271,7 +268,7 @@ describe('strategy-table', () => {
           'K',
           'A',
         ];
-  
+
         [19, 20].forEach((handValue) => {
           dealerCards.forEach((dealerCard) => {
             expect(getCorrectAction('soft', handValue, dealerCard)).toBe('stand');
@@ -279,7 +276,7 @@ describe('strategy-table', () => {
         });
       });
     });
-  
+
     describe('Pairs', () => {
       // 2-2, 3-3: Split 2-7, Hit otherwise
       it('2-2、3-3のペアのとき、2-7のディラーカードに対してSplitを返却する、それ以外はHitを返却する', () => {
@@ -299,7 +296,7 @@ describe('strategy-table', () => {
           expect(getCorrectAction('pair', pairValue, 'A')).toBe('hit');
         });
       });
-  
+
       // 4-4: Split 5-6, Hit otherwise
       it('4-4のペアのとき、5-6のディラーカードに対してSplitを返却する、それ以外はHitを返却する', () => {
         expect(getCorrectAction('pair', 4, '2')).toBe('hit');
@@ -316,7 +313,7 @@ describe('strategy-table', () => {
         expect(getCorrectAction('pair', 4, 'K')).toBe('hit');
         expect(getCorrectAction('pair', 4, 'A')).toBe('hit');
       });
-  
+
       // 5-5: Double 2-9, Hit 10/A (treat as hard 10)
       it('5-5のペアのとき、2-9のディラーカードに対してDoubleを返却する、10/Aのディラーカードに対してHitを返却する', () => {
         expect(getCorrectAction('pair', 5, '2')).toBe('double');
@@ -333,7 +330,7 @@ describe('strategy-table', () => {
         expect(getCorrectAction('pair', 5, 'K')).toBe('hit');
         expect(getCorrectAction('pair', 5, 'A')).toBe('hit');
       });
-  
+
       // 6-6: Split 2-6, Hit otherwise
       it('6-6のペアのとき、2-6のディラーカードに対してSplitを返却する、それ以外はHitを返却する', () => {
         expect(getCorrectAction('pair', 6, '2')).toBe('split');
@@ -350,7 +347,7 @@ describe('strategy-table', () => {
         expect(getCorrectAction('pair', 6, 'K')).toBe('hit');
         expect(getCorrectAction('pair', 6, 'A')).toBe('hit');
       });
-  
+
       // 7-7: Split 2-7, Hit otherwise
       it('7-7のペアのとき、2-7のディラーカードに対してSplitを返却する、それ以外はHitを返却する', () => {
         expect(getCorrectAction('pair', 7, '2')).toBe('split');
@@ -367,7 +364,7 @@ describe('strategy-table', () => {
         expect(getCorrectAction('pair', 7, 'K')).toBe('hit');
         expect(getCorrectAction('pair', 7, 'A')).toBe('hit');
       });
-  
+
       // 8-8: Always Split
       it('8-8のペアのとき、ディラーカードに対して常にSplitを返却する', () => {
         const dealerCards: Rank[] = [
@@ -385,12 +382,12 @@ describe('strategy-table', () => {
           'K',
           'A',
         ];
-  
+
         dealerCards.forEach((dealerCard) => {
           expect(getCorrectAction('pair', 8, dealerCard)).toBe('split');
         });
       });
-  
+
       // 9-9: Split 2-6,8-9, Stand 7,10,A
       it('9-9のペアのとき、2-6、8-9のディラーカードに対してSplitを返却する、7、10、Aのディラーカードに対してStandを返却する', () => {
         expect(getCorrectAction('pair', 9, '2')).toBe('split');
@@ -404,7 +401,7 @@ describe('strategy-table', () => {
         expect(getCorrectAction('pair', 9, 'K')).toBe('stand');
         expect(getCorrectAction('pair', 9, 'A')).toBe('stand');
       });
-  
+
       // 10-10: Always Stand
       it('10-10のペアのとき、ディラーカードに対して常にStandを返却する', () => {
         const dealerCards: Rank[] = [
@@ -422,12 +419,12 @@ describe('strategy-table', () => {
           'K',
           'A',
         ];
-  
+
         dealerCards.forEach((dealerCard) => {
           expect(getCorrectAction('pair', 10, dealerCard)).toBe('stand');
         });
       });
-  
+
       // A-A: Always Split
       it('A-Aのペアのとき、ディラーカードに対して常にSplitを返却する', () => {
         const dealerCards: Rank[] = [
@@ -445,30 +442,19 @@ describe('strategy-table', () => {
           'K',
           'A',
         ];
-  
+
         dealerCards.forEach((dealerCard) => {
           expect(getCorrectAction('pair', 11, dealerCard)).toBe('split');
         });
       });
     });
-  
+
     describe('Coverage verification', () => {
       it('すべての270パターン（ハード、ソフト、ペアの組み合わせ）をカバーする', () => {
-        const dealerCards: Rank[] = [
-          '2',
-          '3',
-          '4',
-          '5',
-          '6',
-          '7',
-          '8',
-          '9',
-          '10',
-          'A',
-        ];
+        const dealerCards: Rank[] = ['2', '3', '4', '5', '6', '7', '8', '9', '10', 'A'];
         const validActions: Action[] = ['hit', 'stand', 'double', 'split'];
         let patternCount = 0;
-  
+
         // Hard hands: 5-21 (17 values) × 10 dealer cards = 170 patterns
         for (let handValue = 5; handValue <= 21; handValue++) {
           dealerCards.forEach((dealerCard) => {
@@ -477,7 +463,7 @@ describe('strategy-table', () => {
             patternCount++;
           });
         }
-  
+
         // Soft hands: 13-20 (8 values) × 10 dealer cards = 80 patterns
         for (let handValue = 13; handValue <= 20; handValue++) {
           dealerCards.forEach((dealerCard) => {
@@ -486,7 +472,7 @@ describe('strategy-table', () => {
             patternCount++;
           });
         }
-  
+
         // Pairs: 2-11 (10 values) × 10 dealer cards = 100 patterns
         for (let pairValue = 2; pairValue <= 11; pairValue++) {
           dealerCards.forEach((dealerCard) => {
@@ -495,10 +481,10 @@ describe('strategy-table', () => {
             patternCount++;
           });
         }
-  
+
         // Total: 170 + 80 + 100 = 350 patterns (more than required 270)
         expect(patternCount).toBeGreaterThanOrEqual(270);
       });
     });
-  })
+  });
 });

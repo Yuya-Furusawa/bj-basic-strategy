@@ -118,9 +118,7 @@ describe('quiz-generator', () => {
         const hand = generateRandomHand();
         if (hand.handType === 'soft') {
           softFound = true;
-          const hasAce =
-            hand.playerCards[0].rank === 'A' ||
-            hand.playerCards[1].rank === 'A';
+          const hasAce = hand.playerCards[0].rank === 'A' || hand.playerCards[1].rank === 'A';
           expect(hasAce).toBe(true);
           break;
         }

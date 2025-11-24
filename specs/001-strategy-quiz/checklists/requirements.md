@@ -31,11 +31,11 @@
 
 ## Validation Summary
 
-| Category | Status | Notes |
-|----------|--------|-------|
-| Content Quality | ✅ Pass | 実装詳細なし、ユーザー価値に焦点 |
-| Requirement Completeness | ✅ Pass | 全要件がテスト可能、明確 |
-| Feature Readiness | ✅ Pass | ユーザーストーリーが主要フローをカバー |
+| Category                 | Status  | Notes                                  |
+| ------------------------ | ------- | -------------------------------------- |
+| Content Quality          | ✅ Pass | 実装詳細なし、ユーザー価値に焦点       |
+| Requirement Completeness | ✅ Pass | 全要件がテスト可能、明確               |
+| Feature Readiness        | ✅ Pass | ユーザーストーリーが主要フローをカバー |
 
 ## Notes
 

@@ -30,12 +30,12 @@ __tests__/     # テストファイル
 
 **Purpose**: プロジェクト初期化と基本構造の作成
 
-- [X] T001 Install @react-native-async-storage/async-storage via `npx expo install @react-native-async-storage/async-storage`
-- [X] T002 [P] Create lib/ directory structure per plan.md: lib/strategy/, lib/quiz/, lib/storage/
-- [X] T003 [P] Create components/ directory structure per plan.md: components/card/, components/quiz/, components/home/
-- [X] T004 [P] Create hooks/ directory: hooks/
-- [X] T005 [P] Setup Jest configuration for Expo (verify jest-expo preset in package.json)
-- [X] T006 Download and place card images (Vector Playing Cards 3.2) in assets/cards/ with naming convention {rank}_{suit}.png
+- [x] T001 Install @react-native-async-storage/async-storage via `npx expo install @react-native-async-storage/async-storage`
+- [x] T002 [P] Create lib/ directory structure per plan.md: lib/strategy/, lib/quiz/, lib/storage/
+- [x] T003 [P] Create components/ directory structure per plan.md: components/card/, components/quiz/, components/home/
+- [x] T004 [P] Create hooks/ directory: hooks/
+- [x] T005 [P] Setup Jest configuration for Expo (verify jest-expo preset in package.json)
+- [x] T006 Download and place card images (Vector Playing Cards 3.2) in assets/cards/ with naming convention {rank}\_{suit}.png
 
 ---
 
@@ -47,23 +47,23 @@ __tests__/     # テストファイル
 
 ### Types & Data Model
 
-- [X] T007 [P] Create type definitions in lib/strategy/types.ts: Suit, Rank, Card, HandType, Action, QuizHand interfaces
-- [X] T008 [P] Create quiz state types in lib/quiz/quiz-state.ts: FeedbackState, StreakRecord, QuizState interfaces
+- [x] T007 [P] Create type definitions in lib/strategy/types.ts: Suit, Rank, Card, HandType, Action, QuizHand interfaces
+- [x] T008 [P] Create quiz state types in lib/quiz/quiz-state.ts: FeedbackState, StreakRecord, QuizState interfaces
 
 ### Strategy Table (Core Business Logic)
 
-- [X] T009 Write unit tests for strategy table in __tests__/lib/strategy/strategy-table.test.ts (270 patterns coverage)
-- [X] T010 Implement basic strategy lookup table in lib/strategy/strategy-table.ts: HARD_STRATEGY, SOFT_STRATEGY, PAIR_STRATEGY, getCorrectAction()
+- [x] T009 Write unit tests for strategy table in **tests**/lib/strategy/strategy-table.test.ts (270 patterns coverage)
+- [x] T010 Implement basic strategy lookup table in lib/strategy/strategy-table.ts: HARD_STRATEGY, SOFT_STRATEGY, PAIR_STRATEGY, getCorrectAction()
 
 ### Hand Evaluator
 
-- [X] T011 [P] Write unit tests for hand evaluator in __tests__/lib/strategy/hand-evaluator.test.ts
-- [X] T012 Implement hand evaluation logic in lib/strategy/hand-evaluator.ts: getHandType(), getHandValue(), getCardValue()
+- [x] T011 [P] Write unit tests for hand evaluator in **tests**/lib/strategy/hand-evaluator.test.ts
+- [x] T012 Implement hand evaluation logic in lib/strategy/hand-evaluator.ts: getHandType(), getHandValue(), getCardValue()
 
 ### Quiz Generator
 
-- [X] T013 [P] Write unit tests for quiz generator in __tests__/lib/quiz/quiz-generator.test.ts (均等分布テスト含む)
-- [X] T014 Implement quiz generation in lib/quiz/quiz-generator.ts: generateRandomHand(), generateRandomCard()
+- [x] T013 [P] Write unit tests for quiz generator in **tests**/lib/quiz/quiz-generator.test.ts (均等分布テスト含む)
+- [x] T014 Implement quiz generation in lib/quiz/quiz-generator.ts: generateRandomHand(), generateRandomCard()
 
 **Checkpoint**: Foundation ready - ユーザーストーリー実装を開始可能
 
@@ -77,30 +77,30 @@ __tests__/     # テストファイル
 
 ### Card Display Components
 
-- [X] T015 [P] [US1] Create PlayingCard component in components/card/playing-card.tsx (単一カード表示、expo-image使用)
-- [X] T016 [P] [US1] Create CardHand component in components/card/card-hand.tsx (プレイヤー手札2枚、ディーラーアップカード1枚表示)
+- [x] T015 [P] [US1] Create PlayingCard component in components/card/playing-card.tsx (単一カード表示、expo-image使用)
+- [x] T016 [P] [US1] Create CardHand component in components/card/card-hand.tsx (プレイヤー手札2枚、ディーラーアップカード1枚表示)
 
 ### Quiz UI Components
 
-- [X] T017 [P] [US1] Create ActionButton component in components/quiz/action-button.tsx (Hit/Stand/Double/Split 4ボタン)
-- [X] T018 [P] [US1] Create FeedbackDisplay component in components/quiz/feedback-display.tsx (正解:緑「Correct!」、不正解:赤「Wrong! Answer: [正解]」)
+- [x] T017 [P] [US1] Create ActionButton component in components/quiz/action-button.tsx (Hit/Stand/Double/Split 4ボタン)
+- [x] T018 [P] [US1] Create FeedbackDisplay component in components/quiz/feedback-display.tsx (正解:緑「Correct!」、不正解:赤「Wrong! Answer: [正解]」)
 
 ### Home Screen Components
 
-- [X] T019 [P] [US1] Create StartButton component in components/home/start-button.tsx
+- [x] T019 [P] [US1] Create StartButton component in components/home/start-button.tsx
 
 ### Quiz Hook
 
-- [X] T020 [US1] Implement useQuiz hook in hooks/use-quiz.ts: currentHand, feedback, checkAnswer(), nextHand()
+- [x] T020 [US1] Implement useQuiz hook in hooks/use-quiz.ts: currentHand, feedback, checkAnswer(), nextHand()
 
 ### Screens
 
-- [X] T021 [US1] Update home screen in app/index.tsx: StartButton配置、router.push('/quiz')遷移
-- [X] T022 [US1] Create quiz screen in app/quiz.tsx: CardHand, ActionButton×4, FeedbackDisplay, NextHandボタン, 戻るボタン配置
+- [x] T021 [US1] Update home screen in app/index.tsx: StartButton配置、router.push('/quiz')遷移
+- [x] T022 [US1] Create quiz screen in app/quiz.tsx: CardHand, ActionButton×4, FeedbackDisplay, NextHandボタン, 戻るボタン配置
 
 ### Integration
 
-- [X] T023 [US1] Connect useQuiz hook to quiz screen: 正誤判定、フィードバック表示、次の問題生成
+- [x] T023 [US1] Connect useQuiz hook to quiz screen: 正誤判定、フィードバック表示、次の問題生成
 
 **Checkpoint**: User Story 1完了 - クイズの基本フローが動作し、独立してテスト可能
 
@@ -114,16 +114,16 @@ __tests__/     # テストファイル
 
 ### Streak UI Component
 
-- [X] T024 [P] [US2] Create StreakCounter component in components/quiz/streak-counter.tsx (現在のストリーク表示)
+- [x] T024 [P] [US2] Create StreakCounter component in components/quiz/streak-counter.tsx (現在のストリーク表示)
 
 ### Streak Hook
 
-- [X] T025 [US2] Implement useStreak hook in hooks/use-streak.ts: currentStreak, bestStreak, incrementStreak(), resetStreak()
+- [x] T025 [US2] Implement useStreak hook in hooks/use-streak.ts: currentStreak, bestStreak, incrementStreak(), resetStreak()
 
 ### Integration
 
-- [X] T026 [US2] Add StreakCounter to quiz screen in app/quiz.tsx: 画面上部に配置
-- [X] T027 [US2] Connect useStreak to useQuiz: 正解時increment、不正解時reset
+- [x] T026 [US2] Add StreakCounter to quiz screen in app/quiz.tsx: 画面上部に配置
+- [x] T027 [US2] Connect useStreak to useQuiz: 正解時increment、不正解時reset
 
 **Checkpoint**: User Story 2完了 - ストリーク機能が動作し、US1と独立してテスト可能
 
@@ -137,16 +137,16 @@ __tests__/     # テストファイル
 
 ### Storage
 
-- [X] T028 [P] [US3] Implement streak storage in lib/storage/streak-storage.ts: loadBestStreak(), saveBestStreak() (AsyncStorage使用)
+- [x] T028 [P] [US3] Implement streak storage in lib/storage/streak-storage.ts: loadBestStreak(), saveBestStreak() (AsyncStorage使用)
 
 ### Home Screen Component
 
-- [X] T029 [P] [US3] Create BestStreak component in components/home/best-streak.tsx (「Best Streak: [数値]」形式)
+- [x] T029 [P] [US3] Create BestStreak component in components/home/best-streak.tsx (「Best Streak: [数値]」形式)
 
 ### Integration
 
-- [X] T030 [US3] Update useStreak hook to persist bestStreak: アプリ起動時にAsyncStorageから読み込み、更新時に保存
-- [X] T031 [US3] Add BestStreak to home screen in app/index.tsx: トップページに最高記録表示
+- [x] T030 [US3] Update useStreak hook to persist bestStreak: アプリ起動時にAsyncStorageから読み込み、更新時に保存
+- [x] T031 [US3] Add BestStreak to home screen in app/index.tsx: トップページに最高記録表示
 
 **Checkpoint**: User Story 3完了 - 永続化機能が動作し、全ユーザーストーリーが独立して機能
 
@@ -156,11 +156,11 @@ __tests__/     # テストファイル
 
 **Purpose**: 複数ユーザーストーリーにまたがる改善
 
-- [X] T032 [P] Add haptic feedback to action buttons using expo-haptics in components/quiz/action-button.tsx
-- [X] T033 [P] Add fade animation to FeedbackDisplay using react-native-reanimated in components/quiz/feedback-display.tsx
-- [X] T034 [P] Verify offline functionality: 機内モードでの全機能テスト
-- [X] T035 Run all unit tests and verify 80% business logic coverage
-- [X] T036 Run quickstart.md validation: 全Verification Checklist項目を確認
+- [x] T032 [P] Add haptic feedback to action buttons using expo-haptics in components/quiz/action-button.tsx
+- [x] T033 [P] Add fade animation to FeedbackDisplay using react-native-reanimated in components/quiz/feedback-display.tsx
+- [x] T034 [P] Verify offline functionality: 機内モードでの全機能テスト
+- [x] T035 Run all unit tests and verify 80% business logic coverage
+- [x] T036 Run quickstart.md validation: 全Verification Checklist項目を確認
 
 ---
 

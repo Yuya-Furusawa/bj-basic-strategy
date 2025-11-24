@@ -1,4 +1,3 @@
-import { useRouter } from 'expo-router';
 import { Pressable, ScrollView, StyleSheet, Text, View } from 'react-native';
 
 import { CardHand } from '../components/card/card-hand';
@@ -12,10 +11,8 @@ import type { Action } from '../lib/strategy/types';
 const ACTIONS: Action[] = ['hit', 'stand', 'double', 'split'];
 
 export default function QuizScreen() {
-  const router = useRouter();
   const { currentHand, feedback, checkAnswer, nextHand } = useQuiz();
-  const { currentStreak, bestStreak, incrementStreak, resetStreak } =
-    useStreak();
+  const { currentStreak, bestStreak, incrementStreak, resetStreak } = useStreak();
 
   const handleActionPress = (action: Action) => {
     if (feedback.type !== 'none') return;
@@ -35,19 +32,13 @@ export default function QuizScreen() {
   const isAnswered = feedback.type !== 'none';
 
   return (
-    <ScrollView
-      style={styles.container}
-      contentContainerStyle={styles.contentContainer}
-    >
+    <ScrollView style={styles.container} contentContainerStyle={styles.contentContainer}>
       <View style={styles.header}>
         <StreakCounter currentStreak={currentStreak} bestStreak={bestStreak} />
       </View>
 
       <View style={styles.cardSection}>
-        <CardHand
-          playerCards={currentHand.playerCards}
-          dealerUpCard={currentHand.dealerUpCard}
-        />
+        <CardHand playerCards={currentHand.playerCards} dealerUpCard={currentHand.dealerUpCard} />
       </View>
 
       <View style={styles.feedbackSection}>

@@ -44,6 +44,7 @@ assets/cards/
 ```
 
 **Image Naming Convention**:
+
 - Number cards: `{rank}_{suit}.svg` (e.g., `2_hearts.svg`, `10_spades.svg`)
 - Face cards: `jack_{suit}.svg`, `queen_{suit}.svg`, `king_{suit}.svg`
 - Aces: `ace_{suit}.svg`

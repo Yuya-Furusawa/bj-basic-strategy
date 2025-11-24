@@ -1,20 +1,11 @@
-import {
-  getHandType,
-  getHandValue,
-  getRankValue,
-} from '../strategy/hand-evaluator';
+import { getHandType, getHandValue, getRankValue } from '../strategy/hand-evaluator';
 import { getCorrectAction } from '../strategy/strategy-table';
 import type { Card, QuizHand, Rank, Suit } from '../strategy/types';
 
 /**
  * 利用可能なスート
  */
-export const SUITS: readonly Suit[] = [
-  'hearts',
-  'diamonds',
-  'clubs',
-  'spades',
-] as const;
+export const SUITS: readonly Suit[] = ['hearts', 'diamonds', 'clubs', 'spades'] as const;
 
 /**
  * 利用可能なランク
@@ -72,11 +63,7 @@ export function generateRandomHand(): QuizHand {
   }
 
   // 正解アクションを取得
-  const correctAction = getCorrectAction(
-    handType,
-    strategyValue,
-    dealerUpCard.rank
-  );
+  const correctAction = getCorrectAction(handType, strategyValue, dealerUpCard.rank);
 
   return {
     playerCards,

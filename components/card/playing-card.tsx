@@ -80,11 +80,7 @@ export function PlayingCard({ card, size = 'medium' }: PlayingCardProps) {
 
   return (
     <View style={[styles.container, dimensions]}>
-      <Image
-        source={imageSource}
-        style={[styles.image, dimensions]}
-        contentFit="contain"
-      />
+      <Image source={imageSource} style={[styles.image, dimensions]} contentFit="contain" />
     </View>
   );
 }

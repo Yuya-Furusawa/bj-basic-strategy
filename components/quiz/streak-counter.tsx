@@ -5,10 +5,7 @@ interface StreakCounterProps {
   bestStreak: number;
 }
 
-export function StreakCounter({
-  currentStreak,
-  bestStreak,
-}: StreakCounterProps) {
+export function StreakCounter({ currentStreak, bestStreak }: StreakCounterProps) {
   return (
     <View style={styles.container}>
       <View style={styles.streakItem}>

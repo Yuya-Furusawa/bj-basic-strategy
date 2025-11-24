@@ -1,5 +1,5 @@
-import { Stack } from "expo-router";
-import React from "react";
+import { Stack } from 'expo-router';
+import React from 'react';
 
 export default function RootLayout() {
   return (
@@ -13,7 +13,7 @@ export default function RootLayout() {
         headerBackTitle: '',
         headerBackVisible: true,
         headerShadowVisible: false,
-      }}>
-    </Stack>
+      }}
+    ></Stack>
   );
 }

@@ -23,6 +23,7 @@ interface Card {
 ```
 
 **Validation Rules**:
+
 - rankは12種類（2-10, J, Q, K, A）のいずれか
 - suitは4種類（hearts, diamonds, clubs, spades）のいずれか
 
@@ -39,6 +40,7 @@ type HandType = 'hard' | 'soft' | 'pair';
 ```
 
 **定義**:
+
 - `hard`: Aを含まない、またはAを1としてカウントする手札
 - `soft`: Aを11としてカウントできる手札
 - `pair`: 同じランクの2枚の手札
@@ -56,6 +58,7 @@ type Action = 'hit' | 'stand' | 'double' | 'split';
 ```
 
 **Validation Rules**:
+
 - `split`は`pair`ハンドタイプでのみ正解になりうる
 
 ---
@@ -86,6 +89,7 @@ interface QuizHand {
 ```
 
 **Validation Rules**:
+
 - playerCardsは常に2枚
 - handValueの範囲:
   - hard: 5-20（4以下は存在しない、21はブラックジャック）
@@ -113,11 +117,13 @@ interface StreakRecord {
 ```
 
 **Validation Rules**:
+
 - currentStreak >= 0
 - bestStreak >= 0
 - bestStreak >= currentStreak（常に）
 
 **State Transitions**:
+
 ```
 正解時:
   currentStreak++
@@ -159,6 +165,7 @@ interface QuizState {
 ```
 
 **State Transitions**:
+
 ```
 初期状態:
   feedback = { type: 'none' }
@@ -189,11 +196,11 @@ interface QuizState {
 type HardStrategy = Record<number, Action[]>;
 
 const HARD_STRATEGY: HardStrategy = {
-  5:  ['H', 'H', 'H', 'H', 'H', 'H', 'H', 'H', 'H', 'H'],  // 2-A
-  6:  ['H', 'H', 'H', 'H', 'H', 'H', 'H', 'H', 'H', 'H'],
-  7:  ['H', 'H', 'H', 'H', 'H', 'H', 'H', 'H', 'H', 'H'],
-  8:  ['H', 'H', 'H', 'H', 'H', 'H', 'H', 'H', 'H', 'H'],
-  9:  ['H', 'D', 'D', 'D', 'D', 'H', 'H', 'H', 'H', 'H'],
+  5: ['H', 'H', 'H', 'H', 'H', 'H', 'H', 'H', 'H', 'H'], // 2-A
+  6: ['H', 'H', 'H', 'H', 'H', 'H', 'H', 'H', 'H', 'H'],
+  7: ['H', 'H', 'H', 'H', 'H', 'H', 'H', 'H', 'H', 'H'],
+  8: ['H', 'H', 'H', 'H', 'H', 'H', 'H', 'H', 'H', 'H'],
+  9: ['H', 'D', 'D', 'D', 'D', 'H', 'H', 'H', 'H', 'H'],
   10: ['D', 'D', 'D', 'D', 'D', 'D', 'D', 'D', 'H', 'H'],
   11: ['D', 'D', 'D', 'D', 'D', 'D', 'D', 'D', 'D', 'D'],
   12: ['H', 'H', 'S', 'S', 'S', 'H', 'H', 'H', 'H', 'H'],
@@ -217,14 +224,14 @@ const HARD_STRATEGY: HardStrategy = {
 type SoftStrategy = Record<number, Action[]>;
 
 const SOFT_STRATEGY: SoftStrategy = {
-  13: ['H', 'H', 'H', 'D', 'D', 'H', 'H', 'H', 'H', 'H'],  // A+2
-  14: ['H', 'H', 'H', 'D', 'D', 'H', 'H', 'H', 'H', 'H'],  // A+3
-  15: ['H', 'H', 'D', 'D', 'D', 'H', 'H', 'H', 'H', 'H'],  // A+4
-  16: ['H', 'H', 'D', 'D', 'D', 'H', 'H', 'H', 'H', 'H'],  // A+5
-  17: ['H', 'D', 'D', 'D', 'D', 'H', 'H', 'H', 'H', 'H'],  // A+6
-  18: ['S', 'D', 'D', 'D', 'D', 'S', 'S', 'H', 'H', 'H'],  // A+7
-  19: ['S', 'S', 'S', 'S', 'S', 'S', 'S', 'S', 'S', 'S'],  // A+8
-  20: ['S', 'S', 'S', 'S', 'S', 'S', 'S', 'S', 'S', 'S'],  // A+9
+  13: ['H', 'H', 'H', 'D', 'D', 'H', 'H', 'H', 'H', 'H'], // A+2
+  14: ['H', 'H', 'H', 'D', 'D', 'H', 'H', 'H', 'H', 'H'], // A+3
+  15: ['H', 'H', 'D', 'D', 'D', 'H', 'H', 'H', 'H', 'H'], // A+4
+  16: ['H', 'H', 'D', 'D', 'D', 'H', 'H', 'H', 'H', 'H'], // A+5
+  17: ['H', 'D', 'D', 'D', 'D', 'H', 'H', 'H', 'H', 'H'], // A+6
+  18: ['S', 'D', 'D', 'D', 'D', 'S', 'S', 'H', 'H', 'H'], // A+7
+  19: ['S', 'S', 'S', 'S', 'S', 'S', 'S', 'S', 'S', 'S'], // A+8
+  20: ['S', 'S', 'S', 'S', 'S', 'S', 'S', 'S', 'S', 'S'], // A+9
 };
 ```
 
@@ -239,16 +246,16 @@ const SOFT_STRATEGY: SoftStrategy = {
 type PairStrategy = Record<number, Action[]>;
 
 const PAIR_STRATEGY: PairStrategy = {
-  2:  ['P', 'P', 'P', 'P', 'P', 'P', 'H', 'H', 'H', 'H'],  // 2-2
-  3:  ['P', 'P', 'P', 'P', 'P', 'P', 'H', 'H', 'H', 'H'],  // 3-3
-  4:  ['H', 'H', 'H', 'P', 'P', 'H', 'H', 'H', 'H', 'H'],  // 4-4
-  5:  ['D', 'D', 'D', 'D', 'D', 'D', 'D', 'D', 'H', 'H'],  // 5-5 (ダブルダウン推奨)
-  6:  ['P', 'P', 'P', 'P', 'P', 'H', 'H', 'H', 'H', 'H'],  // 6-6
-  7:  ['P', 'P', 'P', 'P', 'P', 'P', 'H', 'H', 'H', 'H'],  // 7-7
-  8:  ['P', 'P', 'P', 'P', 'P', 'P', 'P', 'P', 'P', 'P'],  // 8-8
-  9:  ['P', 'P', 'P', 'P', 'P', 'S', 'P', 'P', 'S', 'S'],  // 9-9
-  10: ['S', 'S', 'S', 'S', 'S', 'S', 'S', 'S', 'S', 'S'],  // 10-10
-  11: ['P', 'P', 'P', 'P', 'P', 'P', 'P', 'P', 'P', 'P'],  // A-A
+  2: ['P', 'P', 'P', 'P', 'P', 'P', 'H', 'H', 'H', 'H'], // 2-2
+  3: ['P', 'P', 'P', 'P', 'P', 'P', 'H', 'H', 'H', 'H'], // 3-3
+  4: ['H', 'H', 'H', 'P', 'P', 'H', 'H', 'H', 'H', 'H'], // 4-4
+  5: ['D', 'D', 'D', 'D', 'D', 'D', 'D', 'D', 'H', 'H'], // 5-5 (ダブルダウン推奨)
+  6: ['P', 'P', 'P', 'P', 'P', 'H', 'H', 'H', 'H', 'H'], // 6-6
+  7: ['P', 'P', 'P', 'P', 'P', 'P', 'H', 'H', 'H', 'H'], // 7-7
+  8: ['P', 'P', 'P', 'P', 'P', 'P', 'P', 'P', 'P', 'P'], // 8-8
+  9: ['P', 'P', 'P', 'P', 'P', 'S', 'P', 'P', 'S', 'S'], // 9-9
+  10: ['S', 'S', 'S', 'S', 'S', 'S', 'S', 'S', 'S', 'S'], // 10-10
+  11: ['P', 'P', 'P', 'P', 'P', 'P', 'P', 'P', 'P', 'P'], // A-A
 };
 ```
 
@@ -269,7 +276,7 @@ const STORAGE_KEYS = {
 
 // 格納形式
 interface StoredData {
-  bestStreak: number;  // JSON.stringify(number)
+  bestStreak: number; // JSON.stringify(number)
 }
 ```
 

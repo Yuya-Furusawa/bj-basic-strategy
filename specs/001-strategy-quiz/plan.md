@@ -11,6 +11,7 @@
 
 **Language/Version**: TypeScript ~5.9.2 (strict mode enabled)
 **Primary Dependencies**:
+
 - Expo SDK ~54.0.24
 - React 19.1.0
 - React Native 0.81.5
@@ -23,37 +24,43 @@
 **Target Platform**: iOS, Android, Web (Expo universal)
 **Project Type**: mobile (Expo React Native)
 **Performance Goals**:
+
 - アプリ起動3秒以内
 - 正誤判定0.5秒以内
 - 画面遷移300ms以内
 - 60fps アニメーション
 
 **Constraints**:
+
 - 完全オフライン対応（MUST）
 - メモリ200MB以下（SHOULD）
 - バックグラウンド不要処理なし（MUST NOT）
 
 **Scale/Scope**:
+
 - 270通りの手札パターン（プレイヤーハンド × ディーラーアップカード）
 - 2画面（トップページ、クイズ画面）
 
 ## Constitution Check
 
-*GATE: Must pass before Phase 0 research. Re-check after Phase 1 design.*
+_GATE: Must pass before Phase 0 research. Re-check after Phase 1 design._
 
 ### I. Quality First (品質第一) ✅
+
 - [x] 正確性: ベーシックストラテジーデータは数学的に検証された標準6デッキルールに基づく
 - [x] 信頼性: オフライン完全対応、ローカルデータ保存
 - [x] 一貫性: Expo universalでiOS/Android/Web間の一貫したUI/UX
 - [x] 保守性: TypeScript strict mode、明確なコンポーネント分離
 
 ### II. Test Strategy (テスト戦略) ✅
+
 - [x] ユニットテスト: 戦略計算、ハンド評価、ストリーク計算はユニットテスト必須
 - [x] コンポーネントテスト: カード表示、アクションボタンのスナップショットテスト
 - [ ] E2Eテスト: 主要フロー（起動→クイズ開始→回答→フィードバック）のE2Eテスト
 - [ ] テストカバレッジ: ビジネスロジック80%以上目標
 
 ### III. UX Excellence (UXエクセレンス) ✅
+
 - [x] 即時性: 3タップ以内でクイズ開始（SC-001）
 - [x] 可読性: カード画像表示、明確なフィードバック色分け
 - [ ] アクセシビリティ: WCAG 2.1 AA基準目標
@@ -61,6 +68,7 @@
 - [x] フィードバック: 正誤の視覚的フィードバック、haptic feedback
 
 ### IV. Performance Standards (パフォーマンス基準) ✅
+
 - [x] 起動時間: 3秒以内（SC-003）
 - [x] 画面遷移: 300ms以内
 - [x] フレームレート: 60fps維持（react-native-reanimated使用）
@@ -68,6 +76,7 @@
 - [x] バッテリー: バックグラウンド処理なし
 
 ### Violations
+
 なし - 全てのConstitution要件を満たす設計
 
 ## Project Structure
