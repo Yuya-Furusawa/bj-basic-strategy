@@ -1,6 +1,7 @@
-import { useRouter } from 'expo-router';
+import { useNavigation, useRouter } from 'expo-router';
 import { StyleSheet, Text, View } from 'react-native';
 
+import { useEffect } from 'react';
 import { BestStreak } from '../components/home/best-streak';
 import { StartButton } from '../components/home/start-button';
 import { useStreak } from '../hooks/use-streak';
@@ -12,6 +13,12 @@ export default function HomeScreen() {
   const handleStartQuiz = () => {
     router.push('/quiz');
   };
+
+  const navigation = useNavigation();
+
+  useEffect(() => {
+    navigation.setOptions({ headerShown: false });
+  }, [navigation]);
 
   return (
     <View style={styles.container}>

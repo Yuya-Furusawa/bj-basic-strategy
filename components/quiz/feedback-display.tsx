@@ -36,7 +36,9 @@ export function FeedbackDisplay({ feedback }: FeedbackDisplayProps) {
   }));
 
   if (feedback.type === 'none') {
-    return null;
+    return (
+      <View style={styles.container}></View>
+    );
   }
 
   const isCorrect = feedback.type === 'correct';
@@ -61,7 +63,7 @@ export function FeedbackDisplay({ feedback }: FeedbackDisplayProps) {
 
 const styles = StyleSheet.create({
   container: {
-    paddingVertical: 16,
+    height: 60,
     paddingHorizontal: 24,
     borderRadius: 12,
     alignItems: 'center',

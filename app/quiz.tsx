@@ -32,10 +32,6 @@ export default function QuizScreen() {
     nextHand();
   };
 
-  const handleGoBack = () => {
-    router.back();
-  };
-
   const isAnswered = feedback.type !== 'none';
 
   return (
@@ -44,9 +40,6 @@ export default function QuizScreen() {
       contentContainerStyle={styles.contentContainer}
     >
       <View style={styles.header}>
-        <Pressable style={styles.backButton} onPress={handleGoBack}>
-          <Text style={styles.backButtonText}>←</Text>
-        </Pressable>
         <StreakCounter currentStreak={currentStreak} bestStreak={bestStreak} />
       </View>
 
@@ -103,8 +96,8 @@ const styles = StyleSheet.create({
   },
   header: {
     flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
+    justifyContent: 'flex-end',
+    alignItems: 'flex-end',
     marginBottom: 24,
   },
   backButton: {

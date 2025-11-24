@@ -17,7 +17,7 @@ export function StartButton({ onPress }: StartButtonProps) {
 
 const styles = StyleSheet.create({
   button: {
-    backgroundColor: '#2196F3',
+    backgroundColor: '#104A23',
     paddingVertical: 20,
     paddingHorizontal: 48,
     borderRadius: 16,
