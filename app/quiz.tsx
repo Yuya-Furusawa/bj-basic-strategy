@@ -52,7 +52,12 @@ export default function QuizScreen() {
               key={action}
               action={action}
               onPress={handleActionPress}
-              disabled={isAnswered}
+              // buttonが押せる条件
+              // 1. feedback.type === 'none'(未回答状態) かつ
+              // 2. action !== 'split'(split以外は常に選択可能) または currentHand.handType === 'pair'(ペアのみsplit選択可能)
+              isAvailable={
+                feedback.type === 'none' && (action !== 'split' || currentHand.handType === 'pair')
+              }
             />
           ))}
         </View>
@@ -62,7 +67,9 @@ export default function QuizScreen() {
               key={action}
               action={action}
               onPress={handleActionPress}
-              disabled={isAnswered}
+              isAvailable={
+                feedback.type === 'none' && (action !== 'split' || currentHand.handType === 'pair')
+              }
             />
           ))}
         </View>

@@ -6,7 +6,7 @@ import type { Action } from '../../lib/strategy/types';
 interface ActionButtonProps {
   action: Action;
   onPress: (action: Action) => void;
-  disabled?: boolean;
+  isAvailable: boolean;
 }
 
 const ACTION_LABELS: Record<Action, string> = {
@@ -16,9 +16,9 @@ const ACTION_LABELS: Record<Action, string> = {
   split: 'Split',
 };
 
-export function ActionButton({ action, onPress, disabled = false }: ActionButtonProps) {
-  const backgroundColor = disabled ? '#1C2D21' : '#28382D';
-  const buttonTextColor = disabled ? '#768179' : '#fff';
+export function ActionButton({ action, onPress, isAvailable }: ActionButtonProps) {
+  const backgroundColor = !isAvailable ? '#1C2D21' : '#28382D';
+  const buttonTextColor = !isAvailable ? '#768179' : '#fff';
 
   const handlePress = () => {
     Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium);
@@ -30,10 +30,10 @@ export function ActionButton({ action, onPress, disabled = false }: ActionButton
       style={({ pressed }) => [
         styles.button,
         { backgroundColor },
-        pressed && !disabled && styles.pressed,
+        pressed && isAvailable && styles.pressed,
       ]}
       onPress={handlePress}
-      disabled={disabled}
+      disabled={!isAvailable}
     >
       <Text style={[styles.text, { color: buttonTextColor }]}>{ACTION_LABELS[action]}</Text>
     </Pressable>
