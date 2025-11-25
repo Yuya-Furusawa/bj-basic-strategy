@@ -53,6 +53,11 @@ export function generateRandomHand(): QuizHand {
   const handType = getHandType(playerCards);
   const handValue = getHandValue(playerCards);
 
+  // ナチュラル21のときはクイズにならないので再度生成する
+  if (handValue === 21) {
+    return generateRandomHand();
+  }
+
   // ペアの場合の戦略テーブル用の値を計算
   let strategyValue: number;
   if (handType === 'pair') {
