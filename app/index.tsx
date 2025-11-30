@@ -2,6 +2,7 @@ import { useNavigation, useRouter } from 'expo-router';
 import { StyleSheet, Text, View } from 'react-native';
 
 import { useEffect } from 'react';
+import { AdBanner } from '../components/ad/banner-ad';
 import { BestStreak } from '../components/home/best-streak';
 import { StartButton } from '../components/home/start-button';
 import { useStreak } from '../hooks/use-streak';
@@ -32,6 +33,10 @@ export default function HomeScreen() {
         <View style={styles.buttonContainer}>
           <StartButton onPress={handleStartQuiz} />
         </View>
+      </View>
+
+      <View style={styles.adContainer}>
+        <AdBanner />
       </View>
     </View>
   );
@@ -69,5 +74,9 @@ const styles = StyleSheet.create({
   },
   buttonContainer: {
     marginTop: 16,
+  },
+  adContainer: {
+    alignItems: 'center',
+    paddingBottom: 8,
   },
 });
