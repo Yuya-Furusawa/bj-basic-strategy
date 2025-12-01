@@ -11,7 +11,7 @@ const adUnitId = __DEV__
     }) ?? TestIds.ADAPTIVE_BANNER);
 
 export function AdBanner() {
-  const bannerRef = useRef(null);
+  const bannerRef = useRef<BannerAd>(null);
 
   // iOSでアプリがフォアグラウンドに戻ったときに広告をリロード
   useForeground(() => {
