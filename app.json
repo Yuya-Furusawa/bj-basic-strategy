@@ -9,7 +9,12 @@
     "userInterfaceStyle": "automatic",
     "newArchEnabled": true,
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "infoPlist": {
+        "NSUserTrackingUsageDescription": "この情報は、より関連性の高い広告を表示するために使用されます。",
+        "ITSAppUsesNonExemptEncryption": false
+      },
+      "bundleIdentifier": "com.fullyou.bjbasicstrategy"
     },
     "android": {
       "adaptiveIcon": {
@@ -38,11 +43,29 @@
             "backgroundColor": "#000000"
           }
         }
+      ],
+      [
+        "react-native-google-mobile-ads",
+        {
+          "androidAppId": "ca-app-pub-3940256099942544~3347511713",
+          "iosAppId": "ca-app-pub-3940256099942544~1458002511"
+        }
       ]
     ],
     "experiments": {
       "typedRoutes": true,
       "reactCompiler": true
+    },
+    "build": {
+      "ios": {
+        "simulator": true
+      }
+    },
+    "extra": {
+      "router": {},
+      "eas": {
+        "projectId": "2cf9e920-35d0-4c53-a372-da55c057d9a5"
+      }
     }
   }
 }

@@ -1,5 +1,6 @@
 import { Pressable, ScrollView, StyleSheet, Text, View } from 'react-native';
 
+import { AdBanner } from '../components/ad/banner-ad';
 import { CardHand } from '../components/card/card-hand';
 import { ActionButton } from '../components/quiz/action-button';
 import { FeedbackDisplay } from '../components/quiz/feedback-display';
@@ -80,6 +81,10 @@ export default function QuizScreen() {
           <Text style={styles.nextButtonText}>Next Hand</Text>
         </Pressable>
       )}
+
+      <View style={styles.adContainer}>
+        <AdBanner />
+      </View>
     </ScrollView>
   );
 }
@@ -135,5 +140,9 @@ const styles = StyleSheet.create({
     color: '#102216',
     fontSize: 18,
     fontWeight: 'bold',
+  },
+  adContainer: {
+    alignItems: 'center',
+    marginTop: 16,
   },
 });
