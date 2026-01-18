@@ -10,15 +10,25 @@
     "web": "expo start --web",
     "lint": "expo lint",
     "format": "prettier --write .",
-    "test": "jest"
+    "test": "jest",
+    "storybook": "react-native-storybook-loader && start-storybook -p 7007",
+    "storybook-generate": "sb-rn-get-stories"
   },
   "dependencies": {
+    "@babel/core": "^7.28.6",
     "@expo/vector-icons": "^15.0.3",
+    "@gorhom/bottom-sheet": "^5.2.8",
     "@react-native-async-storage/async-storage": "2.2.0",
+    "@react-native-community/datetimepicker": "^8.6.0",
+    "@react-native-community/slider": "^5.1.2",
     "@react-navigation/bottom-tabs": "^7.4.0",
     "@react-navigation/elements": "^2.6.3",
     "@react-navigation/native": "^7.1.8",
+    "@storybook/addon-ondevice-actions": "^10.1.11",
+    "@storybook/addon-ondevice-controls": "^10.1.11",
+    "@storybook/react-native": "^10.1.11",
     "@types/jest": "29.5.14",
+    "babel-loader": "^8.4.1",
     "expo": "~54.0.24",
     "expo-constants": "~18.0.10",
     "expo-dev-client": "~6.0.18",
@@ -42,14 +52,17 @@
     "react-native-reanimated": "~4.1.1",
     "react-native-safe-area-context": "~5.6.0",
     "react-native-screens": "~4.16.0",
+    "react-native-svg": "^15.15.1",
     "react-native-web": "~0.21.0",
-    "react-native-worklets": "0.5.1"
+    "react-native-worklets": "0.5.1",
+    "storybook": "^10.1.11"
   },
   "devDependencies": {
     "@types/react": "~19.1.0",
     "eslint": "^9.25.0",
     "eslint-config-expo": "~10.0.0",
     "prettier": "^3.6.2",
+    "react-native-storybook-loader": "^2.0.5",
     "typescript": "~5.9.2"
   },
   "private": true,
