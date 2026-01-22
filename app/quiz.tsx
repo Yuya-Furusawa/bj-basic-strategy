@@ -1,4 +1,7 @@
+import { Ionicons } from '@expo/vector-icons';
+import { useRouter } from 'expo-router';
 import { Pressable, ScrollView, StyleSheet, Text, View } from 'react-native';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 import { AdBanner } from '../components/ad/banner-ad';
 import { CardHand } from '../components/card/card-hand';
@@ -12,6 +15,8 @@ import type { Action } from '../lib/strategy/types';
 const ACTIONS: Action[] = ['hit', 'stand', 'double', 'split'];
 
 export default function QuizScreen() {
+  const router = useRouter();
+  const insets = useSafeAreaInsets();
   const { currentHand, feedback, checkAnswer, nextHand } = useQuiz();
   const { currentStreak, bestStreak, incrementStreak, resetStreak } = useStreak();
 
@@ -33,8 +38,14 @@ export default function QuizScreen() {
   const isAnswered = feedback.type !== 'none';
 
   return (
-    <ScrollView style={styles.container} contentContainerStyle={styles.contentContainer}>
+    <ScrollView
+      style={styles.container}
+      contentContainerStyle={[styles.contentContainer, { paddingTop: insets.top + 12 }]}
+    >
       <View style={styles.header}>
+        <Pressable style={styles.backButton} onPress={() => router.back()}>
+          <Ionicons name="chevron-back" size={28} color="#fff" />
+        </Pressable>
         <StreakCounter currentStreak={currentStreak} bestStreak={bestStreak} />
       </View>
 
@@ -99,17 +110,12 @@ const styles = StyleSheet.create({
   },
   header: {
     flexDirection: 'row',
-    justifyContent: 'flex-end',
-    alignItems: 'flex-end',
+    justifyContent: 'space-between',
+    alignItems: 'center',
     marginBottom: 24,
   },
   backButton: {
-    alignSelf: 'flex-start',
-  },
-  backButtonText: {
-    color: '#fff',
-    fontSize: 18,
-    fontWeight: '600',
+    padding: 4,
   },
   cardSection: {
     alignItems: 'center',
