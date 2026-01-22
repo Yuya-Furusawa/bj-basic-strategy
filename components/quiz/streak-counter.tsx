@@ -31,13 +31,14 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   streakItem: {
+    flexDirection: 'row',
+    gap: 10,
+    justifyContent: 'center',
     alignItems: 'center',
-    minWidth: 60,
   },
   label: {
     fontSize: 12,
     color: '#e0e0e0',
-    marginBottom: 4,
   },
   value: {
     fontSize: 24,
