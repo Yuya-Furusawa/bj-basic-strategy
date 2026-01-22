@@ -9,13 +9,13 @@ export function StreakCounter({ currentStreak, bestStreak }: StreakCounterProps)
   return (
     <View style={styles.container}>
       <View style={styles.streakItem}>
-        <Text style={styles.label}>Streak</Text>
-        <Text style={styles.value}>{currentStreak}</Text>
+        <Text style={styles.label}>連続</Text>
+        <Text style={styles.valueCyan}>{currentStreak}</Text>
       </View>
       <View style={styles.divider} />
       <View style={styles.streakItem}>
-        <Text style={styles.label}>Best</Text>
-        <Text style={styles.value}>{bestStreak}</Text>
+        <Text style={styles.label}>最高</Text>
+        <Text style={styles.valueGold}>{bestStreak}</Text>
       </View>
     </View>
   );
@@ -24,31 +24,45 @@ export function StreakCounter({ currentStreak, bestStreak }: StreakCounterProps)
 const styles = StyleSheet.create({
   container: {
     flexDirection: 'row',
-    backgroundColor: 'rgba(255, 255, 255, 0.15)',
+    backgroundColor: 'rgba(255, 255, 255, 0.05)',
     borderRadius: 12,
-    paddingVertical: 12,
-    paddingHorizontal: 24,
+    borderWidth: 1,
+    borderColor: 'rgba(255, 255, 255, 0.1)',
+    paddingVertical: 10,
+    paddingHorizontal: 20,
     alignItems: 'center',
   },
   streakItem: {
     flexDirection: 'row',
-    gap: 10,
+    gap: 8,
     justifyContent: 'center',
     alignItems: 'center',
   },
   label: {
-    fontSize: 12,
-    color: '#e0e0e0',
+    fontSize: 11,
+    color: '#a0a0a0',
+    letterSpacing: 1,
   },
-  value: {
-    fontSize: 24,
-    fontWeight: 'bold',
-    color: '#fff',
+  valueCyan: {
+    fontSize: 22,
+    fontWeight: '800',
+    color: '#00f5ff',
+    textShadowColor: '#00f5ff',
+    textShadowOffset: { width: 0, height: 0 },
+    textShadowRadius: 8,
+  },
+  valueGold: {
+    fontSize: 22,
+    fontWeight: '800',
+    color: '#ffd700',
+    textShadowColor: '#ffd700',
+    textShadowOffset: { width: 0, height: 0 },
+    textShadowRadius: 8,
   },
   divider: {
     width: 1,
-    height: 40,
-    backgroundColor: 'rgba(255, 255, 255, 0.3)',
-    marginHorizontal: 16,
+    height: 32,
+    backgroundColor: 'rgba(255, 255, 255, 0.2)',
+    marginHorizontal: 14,
   },
 });

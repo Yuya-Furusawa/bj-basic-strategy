@@ -7,7 +7,7 @@ interface BestStreakProps {
 export function BestStreak({ bestStreak }: BestStreakProps) {
   return (
     <View style={styles.container}>
-      <Text style={styles.label}>Best Streak</Text>
+      <Text style={styles.label}>最高記録</Text>
       <Text style={styles.value}>{bestStreak}</Text>
     </View>
   );
@@ -15,20 +15,26 @@ export function BestStreak({ bestStreak }: BestStreakProps) {
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: 'rgba(255, 255, 255, 0.15)',
+    backgroundColor: 'rgba(255, 215, 0, 0.08)',
     borderRadius: 16,
-    paddingVertical: 16,
-    paddingHorizontal: 32,
+    borderWidth: 1,
+    borderColor: 'rgba(255, 215, 0, 0.4)',
+    paddingVertical: 20,
+    paddingHorizontal: 40,
     alignItems: 'center',
   },
   label: {
-    fontSize: 14,
-    color: '#e0e0e0',
-    marginBottom: 4,
+    fontSize: 12,
+    color: '#a0a0a0',
+    letterSpacing: 2,
+    marginBottom: 8,
   },
   value: {
-    fontSize: 36,
-    fontWeight: 'bold',
-    color: '#fff',
+    fontSize: 48,
+    fontWeight: '900',
+    color: '#ffd700',
+    textShadowColor: '#ffd700',
+    textShadowOffset: { width: 0, height: 0 },
+    textShadowRadius: 15,
   },
 });

@@ -10,16 +10,13 @@ interface ActionButtonProps {
 }
 
 const ACTION_LABELS: Record<Action, string> = {
-  hit: 'Hit',
-  stand: 'Stand',
-  double: 'Double',
-  split: 'Split',
+  hit: 'ヒット',
+  stand: 'スタンド',
+  double: 'ダブル',
+  split: 'スプリット',
 };
 
 export function ActionButton({ action, onPress, isAvailable }: ActionButtonProps) {
-  const backgroundColor = !isAvailable ? '#1C2D21' : '#28382D';
-  const buttonTextColor = !isAvailable ? '#768179' : '#fff';
-
   const handlePress = () => {
     Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium);
     onPress(action);
@@ -29,13 +26,15 @@ export function ActionButton({ action, onPress, isAvailable }: ActionButtonProps
     <Pressable
       style={({ pressed }) => [
         styles.button,
-        { backgroundColor },
+        isAvailable ? styles.buttonAvailable : styles.buttonDisabled,
         pressed && isAvailable && styles.pressed,
       ]}
       onPress={handlePress}
       disabled={!isAvailable}
     >
-      <Text style={[styles.text, { color: buttonTextColor }]}>{ACTION_LABELS[action]}</Text>
+      <Text style={[styles.text, isAvailable ? styles.textAvailable : styles.textDisabled]}>
+        {ACTION_LABELS[action]}
+      </Text>
     </Pressable>
   );
 }
@@ -49,13 +48,34 @@ const styles = StyleSheet.create({
     borderRadius: 12,
     alignItems: 'center',
     justifyContent: 'center',
+    borderWidth: 1,
+  },
+  buttonAvailable: {
+    backgroundColor: 'rgba(0, 245, 255, 0.08)',
+    borderColor: 'rgba(0, 245, 255, 0.5)',
+    shadowColor: '#00f5ff',
+    shadowOffset: { width: 0, height: 0 },
+    shadowOpacity: 0.3,
+    shadowRadius: 8,
+    elevation: 4,
+  },
+  buttonDisabled: {
+    backgroundColor: 'rgba(255, 255, 255, 0.03)',
+    borderColor: 'rgba(255, 255, 255, 0.1)',
   },
   pressed: {
-    opacity: 0.8,
+    backgroundColor: 'rgba(0, 245, 255, 0.2)',
     transform: [{ scale: 0.98 }],
   },
   text: {
-    fontSize: 18,
-    fontWeight: 'bold',
+    fontSize: 16,
+    fontWeight: '700',
+    letterSpacing: 1,
+  },
+  textAvailable: {
+    color: '#00f5ff',
+  },
+  textDisabled: {
+    color: 'rgba(255, 255, 255, 0.3)',
   },
 });

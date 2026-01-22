@@ -44,7 +44,7 @@ export default function QuizScreen() {
     >
       <View style={styles.header}>
         <Pressable style={styles.backButton} onPress={() => router.back()}>
-          <Ionicons name="chevron-back" size={28} color="#fff" />
+          <Ionicons name="chevron-back" size={28} color="#00f5ff" />
         </Pressable>
         <StreakCounter currentStreak={currentStreak} bestStreak={bestStreak} />
       </View>
@@ -88,8 +88,11 @@ export default function QuizScreen() {
       </View>
 
       {isAnswered && (
-        <Pressable style={styles.nextButton} onPress={handleNextHand}>
-          <Text style={styles.nextButtonText}>Next Hand</Text>
+        <Pressable
+          style={({ pressed }) => [styles.nextButton, pressed && styles.nextButtonPressed]}
+          onPress={handleNextHand}
+        >
+          <Text style={styles.nextButtonText}>次の問題</Text>
         </Pressable>
       )}
 
@@ -103,7 +106,7 @@ export default function QuizScreen() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#102216',
+    backgroundColor: '#0a0a0f',
   },
   contentContainer: {
     padding: 24,
@@ -135,17 +138,29 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   nextButton: {
-    backgroundColor: '#13EC5B',
-    paddingVertical: 24,
+    backgroundColor: 'rgba(0, 255, 136, 0.1)',
+    borderWidth: 2,
+    borderColor: '#00ff88',
+    paddingVertical: 20,
     borderRadius: 12,
     justifyContent: 'center',
     alignItems: 'center',
     marginBottom: 30,
+    shadowColor: '#00ff88',
+    shadowOffset: { width: 0, height: 0 },
+    shadowOpacity: 0.6,
+    shadowRadius: 12,
+    elevation: 8,
+  },
+  nextButtonPressed: {
+    backgroundColor: 'rgba(0, 255, 136, 0.25)',
+    transform: [{ scale: 0.98 }],
   },
   nextButtonText: {
-    color: '#102216',
+    color: '#00ff88',
     fontSize: 18,
-    fontWeight: 'bold',
+    fontWeight: '800',
+    letterSpacing: 2,
   },
   adContainer: {
     alignItems: 'center',

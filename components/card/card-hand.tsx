@@ -12,14 +12,14 @@ export function CardHand({ playerCards, dealerUpCard }: CardHandProps) {
   return (
     <View style={styles.container}>
       <View style={styles.section}>
-        <Text style={styles.label}>Dealer Shows</Text>
+        <Text style={styles.label}>ディーラー</Text>
         <View style={styles.dealerCards}>
           <PlayingCard card={dealerUpCard} size="medium" />
         </View>
       </View>
 
       <View style={styles.section}>
-        <Text style={styles.label}>Your Hand</Text>
+        <Text style={styles.label}>あなたの手札</Text>
         <View style={styles.playerCards}>
           <PlayingCard card={playerCards[0]} size="medium" />
           <PlayingCard card={playerCards[1]} size="medium" />
@@ -39,9 +39,10 @@ const styles = StyleSheet.create({
     gap: 8,
   },
   label: {
-    fontSize: 24,
-    fontWeight: 'bold',
-    color: '#fff',
+    fontSize: 18,
+    fontWeight: '700',
+    color: '#a0a0a0',
+    letterSpacing: 1,
   },
   dealerCards: {
     flexDirection: 'row',
