@@ -3,8 +3,8 @@ import { StyleSheet, Text, View } from 'react-native';
 
 import { useEffect } from 'react';
 import { AdBanner } from '../components/ad/banner-ad';
-import { DecorativeCards } from '../components/home/decorative-cards';
 import { BestStreak } from '../components/home/best-streak';
+import { DecorativeCards } from '../components/home/decorative-cards';
 import { StartButton } from '../components/home/start-button';
 import { useStreak } from '../hooks/use-streak';
 

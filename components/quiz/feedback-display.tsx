@@ -64,7 +64,6 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     width: '100%',
     marginBottom: 24,
-    borderWidth: 1,
   },
   containerCorrect: {
     backgroundColor: 'rgba(0, 255, 136, 0.1)',
