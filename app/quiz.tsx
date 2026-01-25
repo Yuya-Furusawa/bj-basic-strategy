@@ -1,4 +1,7 @@
+import { Ionicons } from '@expo/vector-icons';
+import { useRouter } from 'expo-router';
 import { Pressable, ScrollView, StyleSheet, Text, View } from 'react-native';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 import { AdBanner } from '../components/ad/banner-ad';
 import { CardHand } from '../components/card/card-hand';
@@ -12,6 +15,8 @@ import type { Action } from '../lib/strategy/types';
 const ACTIONS: Action[] = ['hit', 'stand', 'double', 'split'];
 
 export default function QuizScreen() {
+  const router = useRouter();
+  const insets = useSafeAreaInsets();
   const { currentHand, feedback, checkAnswer, nextHand } = useQuiz();
   const { currentStreak, bestStreak, incrementStreak, resetStreak } = useStreak();
 
@@ -33,8 +38,14 @@ export default function QuizScreen() {
   const isAnswered = feedback.type !== 'none';
 
   return (
-    <ScrollView style={styles.container} contentContainerStyle={styles.contentContainer}>
+    <ScrollView
+      style={styles.container}
+      contentContainerStyle={[styles.contentContainer, { paddingTop: insets.top + 12 }]}
+    >
       <View style={styles.header}>
+        <Pressable style={styles.backButton} onPress={() => router.back()}>
+          <Ionicons name="chevron-back" size={28} color="#00f5ff" />
+        </Pressable>
         <StreakCounter currentStreak={currentStreak} bestStreak={bestStreak} />
       </View>
 
@@ -76,11 +87,16 @@ export default function QuizScreen() {
         </View>
       </View>
 
-      {isAnswered && (
-        <Pressable style={styles.nextButton} onPress={handleNextHand}>
-          <Text style={styles.nextButtonText}>Next Hand</Text>
-        </Pressable>
-      )}
+      <View style={styles.nextButtonContainer}>
+        {isAnswered && (
+          <Pressable
+            style={({ pressed }) => [styles.nextButton, pressed && styles.nextButtonPressed]}
+            onPress={handleNextHand}
+          >
+            <Text style={styles.nextButtonText}>次の問題</Text>
+          </Pressable>
+        )}
+      </View>
 
       <View style={styles.adContainer}>
         <AdBanner />
@@ -92,24 +108,19 @@ export default function QuizScreen() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#102216',
+    backgroundColor: '#0a0a0f',
   },
   contentContainer: {
     padding: 24,
   },
   header: {
     flexDirection: 'row',
-    justifyContent: 'flex-end',
-    alignItems: 'flex-end',
+    justifyContent: 'space-between',
+    alignItems: 'center',
     marginBottom: 24,
   },
   backButton: {
-    alignSelf: 'flex-start',
-  },
-  backButtonText: {
-    color: '#fff',
-    fontSize: 18,
-    fontWeight: '600',
+    padding: 4,
   },
   cardSection: {
     alignItems: 'center',
@@ -128,18 +139,33 @@ const styles = StyleSheet.create({
   feedbackSection: {
     alignItems: 'center',
   },
+  nextButtonContainer: {
+    height: 68,
+    marginBottom: 10,
+  },
   nextButton: {
-    backgroundColor: '#13EC5B',
-    paddingVertical: 24,
+    backgroundColor: 'rgba(0, 255, 136, 0.1)',
+    borderWidth: 2,
+    borderColor: '#00ff88',
+    paddingVertical: 20,
     borderRadius: 12,
     justifyContent: 'center',
     alignItems: 'center',
-    marginBottom: 30,
+    shadowColor: '#00ff88',
+    shadowOffset: { width: 0, height: 0 },
+    shadowOpacity: 0.6,
+    shadowRadius: 12,
+    elevation: 8,
+  },
+  nextButtonPressed: {
+    backgroundColor: 'rgba(0, 255, 136, 0.25)',
+    transform: [{ scale: 0.98 }],
   },
   nextButtonText: {
-    color: '#102216',
+    color: '#00ff88',
     fontSize: 18,
-    fontWeight: 'bold',
+    fontWeight: '800',
+    letterSpacing: 2,
   },
   adContainer: {
     alignItems: 'center',

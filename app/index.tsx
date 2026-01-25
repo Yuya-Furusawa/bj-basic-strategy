@@ -1,9 +1,14 @@
 import { useNavigation, useRouter } from 'expo-router';
-import { StyleSheet, Text, View } from 'react-native';
+import { Dimensions, Image, StyleSheet, View } from 'react-native';
+
+const { width: screenWidth } = Dimensions.get('window');
+
+const logo = require('../assets/logos/logo.png');
 
 import { useEffect } from 'react';
 import { AdBanner } from '../components/ad/banner-ad';
 import { BestStreak } from '../components/home/best-streak';
+import { DecorativeCards } from '../components/home/decorative-cards';
 import { StartButton } from '../components/home/start-button';
 import { useStreak } from '../hooks/use-streak';
 
@@ -21,11 +26,14 @@ export default function HomeScreen() {
     navigation.setOptions({ headerShown: false });
   }, [navigation]);
 
+  console.log('screenWidth', screenWidth);
+
   return (
     <View style={styles.container}>
+      <DecorativeCards />
+
       <View style={styles.header}>
-        <Text style={styles.title}>BlackJack</Text>
-        <Text style={styles.subtitle}>Basic Strategy Quiz</Text>
+        <Image source={logo} style={styles.logo} resizeMode="contain" />
       </View>
 
       <View style={styles.content}>
@@ -45,32 +53,24 @@ export default function HomeScreen() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#102216',
+    backgroundColor: '#0a0a0f',
     padding: 24,
   },
   header: {
-    flex: 1,
+    flex: 1.2,
     justifyContent: 'center',
     alignItems: 'center',
+    zIndex: 1,
   },
-  title: {
-    fontSize: 48,
-    fontWeight: 'bold',
-    color: '#fff',
-    textShadowColor: 'rgba(0, 0, 0, 0.3)',
-    textShadowOffset: { width: 2, height: 2 },
-    textShadowRadius: 4,
-  },
-  subtitle: {
-    fontSize: 24,
-    color: '#e0e0e0',
-    marginTop: 8,
+  logo: {
+    width: screenWidth * 0.95,
   },
   content: {
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    gap: 32,
+    gap: 40,
+    zIndex: 1,
   },
   buttonContainer: {
     marginTop: 16,
@@ -78,5 +78,6 @@ const styles = StyleSheet.create({
   adContainer: {
     alignItems: 'center',
     paddingBottom: 8,
+    zIndex: 1,
   },
 });

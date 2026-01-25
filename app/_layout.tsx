@@ -14,6 +14,8 @@ export default function RootLayout() {
         headerBackVisible: true,
         headerShadowVisible: false,
       }}
-    ></Stack>
+    >
+      <Stack.Screen name="quiz" options={{ headerShown: false }} />
+    </Stack>
   );
 }
