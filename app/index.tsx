@@ -1,5 +1,9 @@
 import { useNavigation, useRouter } from 'expo-router';
-import { StyleSheet, Text, View } from 'react-native';
+import { Dimensions, Image, StyleSheet, View } from 'react-native';
+
+const { width: screenWidth } = Dimensions.get('window');
+
+const logo = require('../assets/logos/logo.png');
 
 import { useEffect } from 'react';
 import { AdBanner } from '../components/ad/banner-ad';
@@ -22,16 +26,14 @@ export default function HomeScreen() {
     navigation.setOptions({ headerShown: false });
   }, [navigation]);
 
+  console.log('screenWidth', screenWidth);
+
   return (
     <View style={styles.container}>
       <DecorativeCards />
 
       <View style={styles.header}>
-        <Text style={styles.title}>ブラックジャック</Text>
-        <Text style={styles.subtitle}>ベーシックストラテジー</Text>
-        <View style={styles.quizBadge}>
-          <Text style={styles.quizBadgeText}>クイズ</Text>
-        </View>
+        <Image source={logo} style={styles.logo} resizeMode="contain" />
       </View>
 
       <View style={styles.content}>
@@ -60,38 +62,8 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     zIndex: 1,
   },
-  title: {
-    fontSize: 36,
-    fontWeight: '900',
-    color: '#00f5ff',
-    textShadowColor: '#00f5ff',
-    textShadowOffset: { width: 0, height: 0 },
-    textShadowRadius: 20,
-    letterSpacing: 2,
-  },
-  subtitle: {
-    fontSize: 18,
-    fontWeight: '600',
-    color: '#ff00ff',
-    textShadowColor: '#ff00ff',
-    textShadowOffset: { width: 0, height: 0 },
-    textShadowRadius: 10,
-    letterSpacing: 1,
-    marginTop: 8,
-  },
-  quizBadge: {
-    borderWidth: 1,
-    borderColor: '#00f5ff',
-    paddingHorizontal: 20,
-    paddingVertical: 8,
-    borderRadius: 20,
-    marginTop: 16,
-  },
-  quizBadgeText: {
-    color: '#00f5ff',
-    fontSize: 14,
-    fontWeight: '600',
-    letterSpacing: 2,
+  logo: {
+    width: screenWidth * 0.95,
   },
   content: {
     flex: 1,

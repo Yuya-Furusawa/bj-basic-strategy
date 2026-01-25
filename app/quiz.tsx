@@ -87,14 +87,16 @@ export default function QuizScreen() {
         </View>
       </View>
 
-      {isAnswered && (
-        <Pressable
-          style={({ pressed }) => [styles.nextButton, pressed && styles.nextButtonPressed]}
-          onPress={handleNextHand}
-        >
-          <Text style={styles.nextButtonText}>次の問題</Text>
-        </Pressable>
-      )}
+      <View style={styles.nextButtonContainer}>
+        {isAnswered && (
+          <Pressable
+            style={({ pressed }) => [styles.nextButton, pressed && styles.nextButtonPressed]}
+            onPress={handleNextHand}
+          >
+            <Text style={styles.nextButtonText}>次の問題</Text>
+          </Pressable>
+        )}
+      </View>
 
       <View style={styles.adContainer}>
         <AdBanner />
@@ -137,6 +139,10 @@ const styles = StyleSheet.create({
   feedbackSection: {
     alignItems: 'center',
   },
+  nextButtonContainer: {
+    height: 68,
+    marginBottom: 10,
+  },
   nextButton: {
     backgroundColor: 'rgba(0, 255, 136, 0.1)',
     borderWidth: 2,
@@ -145,7 +151,6 @@ const styles = StyleSheet.create({
     borderRadius: 12,
     justifyContent: 'center',
     alignItems: 'center',
-    marginBottom: 30,
     shadowColor: '#00ff88',
     shadowOffset: { width: 0, height: 0 },
     shadowOpacity: 0.6,
