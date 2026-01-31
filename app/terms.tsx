@@ -61,13 +61,6 @@ export default function TermsScreen() {
             変更後の規約は、アプリ内で公開した時点から効力を生じるものとします。
           </Text>
         </View>
-
-        <View style={styles.section}>
-          <Text style={styles.sectionTitle}>6. お問い合わせ</Text>
-          <Text style={styles.paragraph}>
-            本規約に関するお問い合わせは、アプリ内の「お問い合わせ」からご連絡ください。
-          </Text>
-        </View>
       </View>
     </ScrollView>
   );

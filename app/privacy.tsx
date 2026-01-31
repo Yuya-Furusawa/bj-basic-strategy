@@ -60,13 +60,6 @@ export default function PrivacyScreen() {
             Androidでは「設定」→「Google」→「広告」から設定を変更できます。
           </Text>
         </View>
-
-        <View style={styles.section}>
-          <Text style={styles.sectionTitle}>5. お問い合わせ</Text>
-          <Text style={styles.paragraph}>
-            プライバシーに関するお問い合わせは、アプリ内の「お問い合わせ」からご連絡ください。
-          </Text>
-        </View>
       </View>
     </ScrollView>
   );
