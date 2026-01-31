@@ -3,7 +3,7 @@ import type { Action, HandType, Rank } from './types';
 /**
  * 戦略テーブルで使用するアクションの省略形
  */
-type StrategyAction = 'H' | 'S' | 'D' | 'P';
+type StrategyAction = 'H' | 'S' | 'D' | 'P' | 'R';
 
 /**
  * 省略形からActionへの変換マップ
@@ -13,6 +13,7 @@ const ACTION_MAP: Record<StrategyAction, Action> = {
   S: 'stand',
   D: 'double',
   P: 'split',
+  R: 'surrender',
 };
 
 /**
@@ -31,8 +32,8 @@ const HARD_STRATEGY: Record<number, StrategyAction[]> = {
   12: ['H', 'H', 'S', 'S', 'S', 'H', 'H', 'H', 'H', 'H'],
   13: ['S', 'S', 'S', 'S', 'S', 'H', 'H', 'H', 'H', 'H'],
   14: ['S', 'S', 'S', 'S', 'S', 'H', 'H', 'H', 'H', 'H'],
-  15: ['S', 'S', 'S', 'S', 'S', 'H', 'H', 'H', 'H', 'H'],
-  16: ['S', 'S', 'S', 'S', 'S', 'H', 'H', 'H', 'H', 'H'],
+  15: ['S', 'S', 'S', 'S', 'S', 'H', 'H', 'H', 'R', 'H'], // vs 10: Surrender
+  16: ['S', 'S', 'S', 'S', 'S', 'H', 'H', 'R', 'R', 'R'], // vs 9,10,A: Surrender
   17: ['S', 'S', 'S', 'S', 'S', 'S', 'S', 'S', 'S', 'S'],
   // 18-21: 常にStand（下のgetCorrectActionで処理）
 };

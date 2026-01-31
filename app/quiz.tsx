@@ -12,7 +12,7 @@ import { useQuiz } from '../hooks/use-quiz';
 import { useStreak } from '../hooks/use-streak';
 import type { Action } from '../lib/strategy/types';
 
-const ACTIONS: Action[] = ['hit', 'stand', 'double', 'split'];
+const ACTIONS: Action[] = ['hit', 'stand', 'double', 'surrender', 'split'];
 
 export default function QuizScreen() {
   const router = useRouter();
@@ -74,7 +74,7 @@ export default function QuizScreen() {
           ))}
         </View>
         <View style={styles.actionRow}>
-          {ACTIONS.slice(2, 4).map((action) => (
+          {ACTIONS.slice(2, 5).map((action) => (
             <ActionButton
               key={action}
               action={action}
