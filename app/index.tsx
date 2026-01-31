@@ -1,23 +1,30 @@
+import { Ionicons } from '@expo/vector-icons';
 import { useNavigation, useRouter } from 'expo-router';
-import { Dimensions, Image, StyleSheet, View } from 'react-native';
-
-const { width: screenWidth } = Dimensions.get('window');
-
-const logo = require('../assets/logos/logo.png');
-
 import { useEffect } from 'react';
+import { Dimensions, Image, Pressable, StyleSheet, View } from 'react-native';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
+
 import { AdBanner } from '../components/ad/banner-ad';
 import { BestStreak } from '../components/home/best-streak';
 import { DecorativeCards } from '../components/home/decorative-cards';
 import { StartButton } from '../components/home/start-button';
 import { useStreak } from '../hooks/use-streak';
 
+const { width: screenWidth } = Dimensions.get('window');
+
+const logo = require('../assets/logos/logo.png');
+
 export default function HomeScreen() {
   const router = useRouter();
+  const insets = useSafeAreaInsets();
   const { bestStreak, isLoading } = useStreak();
 
   const handleStartQuiz = () => {
     router.push('/quiz');
+  };
+
+  const handleAbout = () => {
+    router.push('/about');
   };
 
   const navigation = useNavigation();
@@ -26,11 +33,20 @@ export default function HomeScreen() {
     navigation.setOptions({ headerShown: false });
   }, [navigation]);
 
-  console.log('screenWidth', screenWidth);
-
   return (
     <View style={styles.container}>
       <DecorativeCards />
+
+      <Pressable
+        style={({ pressed }) => [
+          styles.aboutButton,
+          { top: insets.top + 12 },
+          pressed && styles.aboutButtonPressed,
+        ]}
+        onPress={handleAbout}
+      >
+        <Ionicons name="information-circle-outline" size={28} color="#00f5ff" />
+      </Pressable>
 
       <View style={styles.header}>
         <Image source={logo} style={styles.logo} resizeMode="contain" />
@@ -79,5 +95,14 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     paddingBottom: 8,
     zIndex: 1,
+  },
+  aboutButton: {
+    position: 'absolute',
+    right: 24,
+    zIndex: 10,
+    padding: 8,
+  },
+  aboutButtonPressed: {
+    opacity: 0.7,
   },
 });
