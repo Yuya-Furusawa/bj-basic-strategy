@@ -1,5 +1,6 @@
 import { Ionicons } from '@expo/vector-icons';
 import { useRouter } from 'expo-router';
+import { useState } from 'react';
 import { Pressable, ScrollView, StyleSheet, Text, View } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
@@ -7,18 +8,29 @@ import { AdBanner } from '../components/ad/banner-ad';
 import { CardHand } from '../components/card/card-hand';
 import { ActionButton } from '../components/quiz/action-button';
 import { FeedbackDisplay } from '../components/quiz/feedback-display';
+import { FeedbackModal } from '../components/quiz/feedback-modal';
 import { StreakCounter } from '../components/quiz/streak-counter';
 import { useQuiz } from '../hooks/use-quiz';
 import { useStreak } from '../hooks/use-streak';
+import { getFeedbackMessage } from '../lib/feedback/feedback-messages';
 import type { Action } from '../lib/strategy/types';
 
 const ACTIONS: Action[] = ['hit', 'stand', 'double', 'surrender', 'split'];
+
+const ACTION_LABELS: Record<string, string> = {
+  hit: 'ヒット',
+  stand: 'スタンド',
+  double: 'ダブル',
+  split: 'スプリット',
+  surrender: 'サレンダー',
+};
 
 export default function QuizScreen() {
   const router = useRouter();
   const insets = useSafeAreaInsets();
   const { currentHand, feedback, checkAnswer, nextHand } = useQuiz();
   const { currentStreak, bestStreak, incrementStreak, resetStreak } = useStreak();
+  const [isModalVisible, setIsModalVisible] = useState(false);
 
   const handleActionPress = (action: Action) => {
     if (feedback.type !== 'none') return;
@@ -32,7 +44,18 @@ export default function QuizScreen() {
   };
 
   const handleNextHand = () => {
+    setIsModalVisible(false);
     nextHand();
+  };
+
+  const handleFeedbackPress = () => {
+    if (feedback.type === 'incorrect') {
+      setIsModalVisible(true);
+    }
+  };
+
+  const handleModalClose = () => {
+    setIsModalVisible(false);
   };
 
   const isAnswered = feedback.type !== 'none';
@@ -54,7 +77,7 @@ export default function QuizScreen() {
       </View>
 
       <View style={styles.feedbackSection}>
-        <FeedbackDisplay feedback={feedback} />
+        <FeedbackDisplay feedback={feedback} onIncorrectPress={handleFeedbackPress} />
       </View>
 
       <View style={styles.actionSection}>
@@ -101,6 +124,19 @@ export default function QuizScreen() {
       <View style={styles.adContainer}>
         <AdBanner />
       </View>
+
+      {feedback.type === 'incorrect' && (
+        <FeedbackModal
+          visible={isModalVisible}
+          onClose={handleModalClose}
+          message={getFeedbackMessage(
+            feedback.handContext.handType,
+            feedback.handContext.handValue,
+            feedback.correctAnswer
+          )}
+          correctActionLabel={ACTION_LABELS[feedback.correctAnswer]}
+        />
+      )}
     </ScrollView>
   );
 }

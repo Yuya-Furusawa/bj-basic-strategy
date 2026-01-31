@@ -1,12 +1,13 @@
 import AntDesign from '@expo/vector-icons/AntDesign';
 import { useEffect } from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { Pressable, StyleSheet, Text, View } from 'react-native';
 import Animated, { useAnimatedStyle, useSharedValue, withTiming } from 'react-native-reanimated';
 
 import type { FeedbackState } from '../../lib/quiz/quiz-state';
 
 interface FeedbackDisplayProps {
   feedback: FeedbackState;
+  onIncorrectPress?: () => void;
 }
 
 const ACTION_LABELS: Record<string, string> = {
@@ -14,9 +15,10 @@ const ACTION_LABELS: Record<string, string> = {
   stand: 'スタンド',
   double: 'ダブル',
   split: 'スプリット',
+  surrender: 'サレンダー',
 };
 
-export function FeedbackDisplay({ feedback }: FeedbackDisplayProps) {
+export function FeedbackDisplay({ feedback, onIncorrectPress }: FeedbackDisplayProps) {
   const opacity = useSharedValue(0);
 
   useEffect(() => {
@@ -37,27 +39,32 @@ export function FeedbackDisplay({ feedback }: FeedbackDisplayProps) {
 
   const isCorrect = feedback.type === 'correct';
 
-  return (
-    <Animated.View
-      style={[styles.container, isCorrect ? styles.containerCorrect : styles.containerWrong, animatedStyle]}
-    >
-      {isCorrect ? (
+  if (isCorrect) {
+    return (
+      <Animated.View style={[styles.container, styles.containerCorrect, animatedStyle]}>
         <View style={styles.feedbackRow}>
           <AntDesign name="check-circle" size={20} color="#00ff88" />
           <Text style={[styles.text, styles.textCorrect]}>正解！</Text>
         </View>
-      ) : (
+      </Animated.View>
+    );
+  }
+
+  return (
+    <Pressable onPress={onIncorrectPress}>
+      <Animated.View style={[styles.container, styles.containerWrong, animatedStyle]}>
         <Text style={[styles.text, styles.textWrong]}>
           不正解... 答え: {ACTION_LABELS[feedback.correctAnswer]}
         </Text>
-      )}
-    </Animated.View>
+        <Text style={styles.hintText}>タップで詳細</Text>
+      </Animated.View>
+    </Pressable>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
-    height: 60,
+    minHeight: 60,
     paddingHorizontal: 24,
     borderRadius: 12,
     alignItems: 'center',
@@ -98,5 +105,10 @@ const styles = StyleSheet.create({
   },
   textWrong: {
     color: '#ff00ff',
+  },
+  hintText: {
+    fontSize: 12,
+    color: 'rgba(255, 0, 255, 0.7)',
+    marginTop: 4,
   },
 });
