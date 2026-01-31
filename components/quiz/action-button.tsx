@@ -50,6 +50,7 @@ const styles = StyleSheet.create({
   button: {
     flex: 1,
     flexBasis: 0,
+    height: 56,
     paddingVertical: 16,
     paddingHorizontal: 16,
     borderRadius: 12,
