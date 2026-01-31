@@ -1,4 +1,4 @@
-import type { Action, QuizHand } from '../strategy/types';
+import type { Action, HandType, QuizHand } from '../strategy/types';
 
 /**
  * 連続正解数の記録を管理するインターフェース
@@ -12,15 +12,23 @@ export interface StreakRecord {
 }
 
 /**
+ * モーダル表示に必要なハンド情報
+ */
+export interface HandContext {
+  handType: HandType;
+  handValue: number;
+}
+
+/**
  * フィードバック状態の型定義
  * - none: フィードバックなし（問題表示中）
  * - correct: 正解
- * - incorrect: 不正解（正解アクションを含む）
+ * - incorrect: 不正解（正解アクションとハンドコンテキストを含む）
  */
 export type FeedbackState =
   | { type: 'none' }
   | { type: 'correct' }
-  | { type: 'incorrect'; correctAnswer: Action };
+  | { type: 'incorrect'; correctAnswer: Action; handContext: HandContext };
 
 /**
  * クイズ画面の状態を管理するインターフェース

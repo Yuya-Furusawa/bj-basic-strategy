@@ -25,12 +25,16 @@ export function useQuiz(): UseQuizReturn {
         setFeedback({
           type: 'incorrect',
           correctAnswer: currentHand.correctAction,
+          handContext: {
+            handType: currentHand.handType,
+            handValue: currentHand.handValue,
+          },
         });
       }
 
       return isCorrect;
     },
-    [currentHand.correctAction]
+    [currentHand]
   );
 
   const nextHand = useCallback(() => {
