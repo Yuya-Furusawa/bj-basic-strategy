@@ -34,7 +34,7 @@ export function useQuiz(): UseQuizReturn {
 
       return isCorrect;
     },
-    [currentHand.correctAction]
+    [currentHand]
   );
 
   const nextHand = useCallback(() => {
