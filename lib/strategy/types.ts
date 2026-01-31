@@ -27,7 +27,7 @@ export type HandType = 'hard' | 'soft' | 'pair';
 /**
  * プレイヤーが選択できる行動
  */
-export type Action = 'hit' | 'stand' | 'double' | 'split';
+export type Action = 'hit' | 'stand' | 'double' | 'split' | 'surrender';
 
 /**
  * 1つのクイズ問題を表現するインターフェース

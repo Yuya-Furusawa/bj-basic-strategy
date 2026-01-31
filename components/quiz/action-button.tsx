@@ -14,6 +14,7 @@ const ACTION_LABELS: Record<Action, string> = {
   stand: 'スタンド',
   double: 'ダブル',
   split: 'スプリット',
+  surrender: 'サレンダー',
 };
 
 export function ActionButton({ action, onPress, isAvailable }: ActionButtonProps) {
@@ -32,7 +33,13 @@ export function ActionButton({ action, onPress, isAvailable }: ActionButtonProps
       onPress={handlePress}
       disabled={!isAvailable}
     >
-      <Text style={[styles.text, isAvailable ? styles.textAvailable : styles.textDisabled]}>
+      <Text
+        style={[
+          styles.text,
+          isAvailable ? styles.textAvailable : styles.textDisabled,
+          ['double', 'surrender', 'split'].includes(action) ? styles.smallText : styles.largeText,
+        ]}
+      >
         {ACTION_LABELS[action]}
       </Text>
     </Pressable>
@@ -44,11 +51,17 @@ const styles = StyleSheet.create({
     flex: 1,
     flexBasis: 0,
     paddingVertical: 16,
-    paddingHorizontal: 24,
+    paddingHorizontal: 16,
     borderRadius: 12,
     alignItems: 'center',
     justifyContent: 'center',
     borderWidth: 1,
+  },
+  largeText: {
+    fontSize: 16,
+  },
+  smallText: {
+    fontSize: 12,
   },
   buttonAvailable: {
     backgroundColor: 'rgba(0, 245, 255, 0.08)',
@@ -68,7 +81,6 @@ const styles = StyleSheet.create({
     transform: [{ scale: 0.98 }],
   },
   text: {
-    fontSize: 16,
     fontWeight: '700',
     letterSpacing: 1,
   },
