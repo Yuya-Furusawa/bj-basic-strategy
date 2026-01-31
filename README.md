@@ -1,50 +1,135 @@
-# Welcome to your Expo app 👋
+# ブラックジャックベーシックストラテジー
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+ブラックジャックのベーシックストラテジーを学習できるアプリです。
 
-## Get started
+## 開発環境のセットアップ
 
-1. Install dependencies
-
-   ```bash
-   npm install
-   ```
-
-2. Start the app
-
-   ```bash
-   npx expo start
-   ```
-
-In the output, you'll find options to open the app in a
-
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
-
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
-
-## Get a fresh project
-
-When you're ready, run:
+### 依存関係のインストール
 
 ```bash
-npm run reset-project
+npm install
 ```
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
+### 開発サーバーの起動
 
-## Learn more
+```bash
+npm start
+```
 
-To learn more about developing your project with Expo, look at the following resources:
+## シミュレーター/エミュレーターでのテスト
 
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
+このプロジェクトは`react-native-google-mobile-ads`を使用しているため、Expo Goでは動作しません。ローカルビルドが必要です。
 
-## Join the community
+### iOS Simulatorでのテスト
 
-Join our community of developers creating universal apps.
+#### 事前準備
 
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+- Xcodeのインストールが必要
+
+#### 手順
+
+```bash
+npx expo run:ios
+```
+
+初回実行時は自動的にネイティブプロジェクトの生成とビルドが行われます（数分かかります）。
+
+2回目以降はビルド済みのアプリが起動し、開発サーバーに接続されます。
+
+#### アイコンや設定を変更した場合
+
+`app.config.ts`の変更（アイコン、スプラッシュスクリーン、権限設定など）を反映するには、クリーンビルドが必要です：
+
+```bash
+npm run ios:clean
+```
+
+## 実機でのテスト
+
+### iOS実機でのテスト
+
+#### 事前準備
+
+- Apple Developer Program（年額$99）への登録が必要
+- EAS CLIのインストール: `npm install -g eas-cli`
+
+#### 手順
+
+1. **EAS CLIにログイン**
+
+   ```bash
+   eas login
+   ```
+
+2. **Apple Developer認証情報の設定**
+
+   ```bash
+   eas credentials --platform ios
+   ```
+
+   - 「Build Credentials」を選択
+   - 証明書の自動生成を選択（推奨）
+
+3. **Development Buildを作成**
+
+   ```bash
+   eas build --profile development --platform ios
+   ```
+
+   ビルドには10〜20分程度かかります。
+
+4. **実機にインストール**
+
+   ビルド完了後、表示されるQRコードをiPhoneのカメラでスキャン
+
+5. **開発サーバーを起動**
+
+   ```bash
+   npm start
+   ```
+
+   インストールしたアプリを開くと、開発サーバーに接続されます。
+
+### Android実機でのテスト
+
+1. **Development Buildを作成**
+
+   ```bash
+   eas build --profile development --platform android
+   ```
+
+2. **実機にインストール**
+
+   ビルド完了後、表示されるQRコードをスキャンしてAPKをインストール
+
+3. **開発サーバーを起動**
+
+   ```bash
+   npm start
+   ```
+
+## ビルド
+
+### プレビュービルド（内部配布用）
+
+```bash
+eas build --profile preview --platform all
+```
+
+### 本番ビルド（ストア提出用）
+
+```bash
+eas build --profile production --platform all
+```
+
+## 環境設定
+
+AdMob IDは環境によって自動で切り替わります：
+
+| ビルドプロファイル | 環境 | AdMob ID |
+|------------------|------|----------|
+| development | 開発 | テストID |
+| preview | 開発 | テストID |
+| production | 本番 | 本番ID |
+
+本番IDは`app.config.ts`の`ADMOB_IDS.production`に設定してください。
