@@ -1,4 +1,4 @@
-import { ExpoConfig, ConfigContext } from "expo/config";
+import { ConfigContext, ExpoConfig } from "expo/config";
 
 // 環境変数で本番環境かどうかを判定
 const isProduction = process.env.APP_ENV === "production";
@@ -7,14 +7,13 @@ const isProduction = process.env.APP_ENV === "production";
 const ADMOB_IDS = {
   // テスト用ID（開発時に使用）
   test: {
-    android: "ca-app-pub-3940256099942544~3347511713",
-    ios: "ca-app-pub-3940256099942544~1458002511",
+    android: "ca-app-pub-3940256099942544~3347511713", // Google公式テストID
+    ios: "ca-app-pub-3940256099942544~1458002511", // Google公式テストID
   },
   // 本番用ID（ストアリリース時に使用）
-  // TODO: 本番のAdMob IDを設定してください
   production: {
-    android: "ca-app-pub-XXXXXXXXXXXXXXXX~XXXXXXXXXX",
-    ios: "ca-app-pub-XXXXXXXXXXXXXXXX~XXXXXXXXXX",
+    android: "ca-app-pub-XXXXXXXXXXXXXXXX~XXXXXXXXXX", // Androidは未対応
+    ios: "ca-app-pub-2642467146436772~5668144397",
   },
 };
 
