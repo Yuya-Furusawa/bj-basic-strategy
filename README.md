@@ -122,6 +122,26 @@ eas build --profile preview --platform all
 eas build --profile production --platform all
 ```
 
+## デプロイ
+
+### iOS（App Store Connect）
+
+mainブランチにPRがマージされると、GitHub Actionsが自動でiOSアプリをビルドし、App Store Connectに提出します。
+
+- **トリガー**: mainブランチへのpush
+- **提出状態**: ドラフト（TestFlightや審査提出は手動）
+
+#### 手動実行
+
+GitHub Actionsの「Deploy to App Store Connect」ワークフローから手動実行も可能です。
+
+#### 必要なGitHub Secrets
+
+| シークレット名 | 説明 |
+|--------------|------|
+| `EXPO_TOKEN` | Expoアクセストークン |
+| `ASC_API_KEY_P8` | App Store Connect APIキー（.p8ファイルをbase64エンコード） |
+
 ## 環境設定
 
 AdMob IDは環境によって自動で切り替わります：
