@@ -1,0 +1,44 @@
+name: Deploy to App Store Connect
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+concurrency:
+  group: deploy-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build-and-submit:
+    name: Build & Submit iOS
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Setup Expo
+        uses: expo/expo-github-action@v8
+        with:
+          eas-version: latest
+          token: ${{ secrets.EXPO_TOKEN }}
+
+      - name: Create App Store Connect API Key file
+        run: echo "${{ secrets.ASC_API_KEY_P8 }}" | base64 --decode > ./asc-api-key.p8
+
+      - name: Build and Submit to App Store Connect
+        run: eas build --platform ios --profile production --non-interactive --auto-submit
+
+      - name: Cleanup API Key file
+        if: always()
+        run: rm -f ./asc-api-key.p8
