@@ -69,6 +69,7 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
       {
         androidAppId: admobIds.android,
         iosAppId: admobIds.ios,
+        userTrackingUsageDescription: false,
       },
     ],
   ],
