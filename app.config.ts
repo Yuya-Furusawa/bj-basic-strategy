@@ -31,8 +31,6 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
   ios: {
     supportsTablet: true,
     infoPlist: {
-      NSUserTrackingUsageDescription:
-        "この情報は、より関連性の高い広告を表示するために使用されます。",
       ITSAppUsesNonExemptEncryption: false,
     },
     bundleIdentifier: "com.fullyou.bjbasicstrategy",
