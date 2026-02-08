@@ -6,7 +6,7 @@ import { BannerAd, BannerAdSize, TestIds, useForeground } from 'react-native-goo
 const adUnitId = __DEV__
   ? TestIds.ADAPTIVE_BANNER
   : (Platform.select({
-      ios: 'ca-app-pub-xxxxxxxxxxxxx/yyyyyyyyyyyyyy', // 本番用iOS広告ユニットID
+      ios: 'ca-app-pub-2642467146436772/7409245675', // 本番用iOS広告ユニットID
       android: 'ca-app-pub-xxxxxxxxxxxxx/yyyyyyyyyyyyyy', // 本番用Android広告ユニットID
     }) ?? TestIds.ADAPTIVE_BANNER);
 
