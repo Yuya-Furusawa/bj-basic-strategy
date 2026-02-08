@@ -22,7 +22,7 @@ const admobIds = isProduction ? ADMOB_IDS.production : ADMOB_IDS.test;
 export default ({ config }: ConfigContext): ExpoConfig => ({
   name: "ブラックジャックベーシックストラテジー",
   slug: "bj-basic-strategy",
-  version: "1.0.0",
+  version: "1.0.1",
   orientation: "portrait",
   icon: "./assets/logos/icon.png",
   scheme: "bjbasicstrategy",
